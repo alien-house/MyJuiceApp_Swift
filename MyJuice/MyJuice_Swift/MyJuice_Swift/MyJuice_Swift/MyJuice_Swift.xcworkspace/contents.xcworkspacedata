@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/shinji/Mydata/personalmarketing/english/canada/school/CICCC/subject/402/MyJuice/MyJuice_Swift/MyJuice_Swift/MyJuice_Swift/Vancouver.gpx">
+   </FileRef>
+   <FileRef
       location = "group:../MyJuice_Swift.xcodeproj">
    </FileRef>
    <FileRef

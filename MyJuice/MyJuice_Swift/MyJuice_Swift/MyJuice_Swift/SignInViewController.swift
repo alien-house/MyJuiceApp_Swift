@@ -83,7 +83,6 @@ class SignInViewController: UIViewController  {
                 self.rightView.alpha = 0.0
             })
             
-        
         }
         
     }
