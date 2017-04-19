@@ -36,9 +36,6 @@ class inputAddressViewController: UIViewController, CLLocationManagerDelegate, G
         definesPresentationContext = true
         
         
-        
-        
-        
     }
     
     

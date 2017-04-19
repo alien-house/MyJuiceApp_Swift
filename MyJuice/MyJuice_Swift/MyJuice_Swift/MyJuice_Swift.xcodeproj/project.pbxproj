@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		73F2EC48975C543E60B8B2C9 /* Pods_MyJuice_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EA62380018B78FFB8F726C /* Pods_MyJuice_Swift.framework */; };
+		D434DF0D1EA6EABB00FFABCD /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D434DF0C1EA6EABB00FFABCD /* AccountViewController.swift */; };
+		D434DF141EA6FFC800FFABCD /* myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json in Resources */ = {isa = PBXBuildFile; fileRef = D434DF131EA6FFC800FFABCD /* myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json */; };
+		D4482AE91E973A42000CFE06 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4482AE81E973A42000CFE06 /* CoreLocation.framework */; };
+		D45D85771E9F1DB40081A170 /* StoreDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45D85761E9F1DB40081A170 /* StoreDetailTableCell.swift */; };
+		D4BEFBEE1EA34E8600EC10E7 /* SelectAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEFBED1EA34E8600EC10E7 /* SelectAddressViewController.swift */; };
+		D4BEFBF11EA3659B00EC10E7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEFBF01EA3659B00EC10E7 /* CustomButton.swift */; };
+		D4BEFBF31EA4001000EC10E7 /* inputAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BEFBF21EA4001000EC10E7 /* inputAddressViewController.swift */; };
+		D4D1120D1E9DD360006C35BD /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1120C1E9DD360006C35BD /* StoreDetailViewController.swift */; };
+		D4D9AB811E9893AB0049C44A /* LocationTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D9AB801E9893AB0049C44A /* LocationTestViewController.swift */; };
+		D4DAD4691E9728530077B6B3 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DAD4681E9728530077B6B3 /* StoreViewController.swift */; };
 		D4F9A3C61E933C2300692C8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9A3C51E933C2300692C8A /* AppDelegate.swift */; };
 		D4F9A3C81E933C2300692C8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9A3C71E933C2300692C8A /* ViewController.swift */; };
 		D4F9A3CB1E933C2300692C8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F9A3C91E933C2300692C8A /* Main.storyboard */; };
@@ -16,11 +26,33 @@
 		D4F9A3D81E933EC800692C8A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9A3D71E933EC800692C8A /* SignInViewController.swift */; };
 		D4F9A3DA1E93446600692C8A /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9A3D91E93446600692C8A /* LeftViewController.swift */; };
 		D4F9A3DC1E9344A800692C8A /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9A3DB1E9344A800692C8A /* RightViewController.swift */; };
+		D4FFEE081E9A0778003BF188 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4FFEE071E9A0778003BF188 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		D4DAD4671E9715D50077B6B3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		6BB16420D82386905C961C3B /* Pods-MyJuice_Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyJuice_Swift.debug.xcconfig"; path = "MyJuice_Swift/Pods/Target Support Files/Pods-MyJuice_Swift/Pods-MyJuice_Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		861BB4505C0BEDE357C7E4A2 /* Pods-MyJuice_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyJuice_Swift.release.xcconfig"; path = "MyJuice_Swift/Pods/Target Support Files/Pods-MyJuice_Swift/Pods-MyJuice_Swift.release.xcconfig"; sourceTree = "<group>"; };
+		D434DF0C1EA6EABB00FFABCD /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		D434DF131EA6FFC800FFABCD /* myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json"; path = "MyJuice_Swift/myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json"; sourceTree = SOURCE_ROOT; };
+		D4482AE81E973A42000CFE06 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D45D85761E9F1DB40081A170 /* StoreDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailTableCell.swift; sourceTree = "<group>"; };
+		D4BEFBED1EA34E8600EC10E7 /* SelectAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAddressViewController.swift; sourceTree = "<group>"; };
+		D4BEFBF01EA3659B00EC10E7 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		D4BEFBF21EA4001000EC10E7 /* inputAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = inputAddressViewController.swift; sourceTree = "<group>"; };
+		D4D1120C1E9DD360006C35BD /* StoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
+		D4D9AB801E9893AB0049C44A /* LocationTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTestViewController.swift; sourceTree = "<group>"; };
+		D4DAD4681E9728530077B6B3 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		D4F9A3C21E933C2300692C8A /* MyJuice_Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyJuice_Swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F9A3C51E933C2300692C8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4F9A3C71E933C2300692C8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +63,7 @@
 		D4F9A3D71E933EC800692C8A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		D4F9A3D91E93446600692C8A /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		D4F9A3DB1E9344A800692C8A /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		D4FFEE071E9A0778003BF188 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3EA62380018B78FFB8F726C /* Pods_MyJuice_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyJuice_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4482AE91E973A42000CFE06 /* CoreLocation.framework in Frameworks */,
 				73F2EC48975C543E60B8B2C9 /* Pods_MyJuice_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,9 +89,49 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D434DF151EA7158D00FFABCD /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D434DF0C1EA6EABB00FFABCD /* AccountViewController.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		D4BEFBEF1EA3657900EC10E7 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D4BEFBF01EA3659B00EC10E7 /* CustomButton.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		D4DAD46A1E9728600077B6B3 /* SignIn/Register */ = {
+			isa = PBXGroup;
+			children = (
+				D4F9A3D71E933EC800692C8A /* SignInViewController.swift */,
+				D4F9A3D91E93446600692C8A /* LeftViewController.swift */,
+				D4F9A3DB1E9344A800692C8A /* RightViewController.swift */,
+			);
+			name = SignIn/Register;
+			sourceTree = "<group>";
+		};
+		D4DAD46B1E97287D0077B6B3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D4DAD4681E9728530077B6B3 /* StoreViewController.swift */,
+				D4BEFBF21EA4001000EC10E7 /* inputAddressViewController.swift */,
+				D4BEFBED1EA34E8600EC10E7 /* SelectAddressViewController.swift */,
+				D4D1120C1E9DD360006C35BD /* StoreDetailViewController.swift */,
+				D45D85761E9F1DB40081A170 /* StoreDetailTableCell.swift */,
+				D4D9AB801E9893AB0049C44A /* LocationTestViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		D4F9A3B91E933C2300692C8A = {
 			isa = PBXGroup;
 			children = (
+				D434DF131EA6FFC800FFABCD /* myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json */,
 				D4F9A3C41E933C2300692C8A /* MyJuice_Swift */,
 				D4F9A3C31E933C2300692C8A /* Products */,
 				376FA74089C4172056F22C9F /* Pods */,
@@ -78,12 +152,14 @@
 			children = (
 				D4F9A3C51E933C2300692C8A /* AppDelegate.swift */,
 				D4F9A3C71E933C2300692C8A /* ViewController.swift */,
+				D434DF151EA7158D00FFABCD /* Account */,
+				D4BEFBEF1EA3657900EC10E7 /* Utility */,
 				D4F9A3C91E933C2300692C8A /* Main.storyboard */,
-				D4F9A3D71E933EC800692C8A /* SignInViewController.swift */,
-				D4F9A3D91E93446600692C8A /* LeftViewController.swift */,
-				D4F9A3DB1E9344A800692C8A /* RightViewController.swift */,
+				D4DAD46B1E97287D0077B6B3 /* Map */,
+				D4DAD46A1E9728600077B6B3 /* SignIn/Register */,
 				D4F9A3CC1E933C2300692C8A /* Assets.xcassets */,
 				D4F9A3CE1E933C2300692C8A /* LaunchScreen.storyboard */,
+				D4FFEE071E9A0778003BF188 /* GoogleService-Info.plist */,
 				D4F9A3D11E933C2300692C8A /* Info.plist */,
 			);
 			path = MyJuice_Swift;
@@ -92,6 +168,7 @@
 		E933CAFD182DDEEC3BB2FFF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4482AE81E973A42000CFE06 /* CoreLocation.framework */,
 				F3EA62380018B78FFB8F726C /* Pods_MyJuice_Swift.framework */,
 			);
 			name = Frameworks;
@@ -110,8 +187,10 @@
 				D4F9A3C01E933C2300692C8A /* Resources */,
 				1E8D00C50FF190F598008B37 /* [CP] Embed Pods Frameworks */,
 				66546650E6D3911EAF32032B /* [CP] Copy Pods Resources */,
+				D434DF121EA6F38600FFABCD /* ShellScript */,
 			);
 			buildRules = (
+				D4DAD4671E9715D50077B6B3 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -162,6 +241,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F9A3D01E933C2300692C8A /* LaunchScreen.storyboard in Resources */,
+				D434DF141EA6FFC800FFABCD /* myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json in Resources */,
+				D4FFEE081E9A0778003BF188 /* GoogleService-Info.plist in Resources */,
 				D4F9A3CD1E933C2300692C8A /* Assets.xcassets in Resources */,
 				D4F9A3CB1E933C2300692C8A /* Main.storyboard in Resources */,
 			);
@@ -215,6 +296,20 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		D434DF121EA6F38600FFABCD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "GOOGLE_APP_ID=1:919365310112:ios:3ec3ed36ebf9f371\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"MyJuice_Swift/myjuice-78fe4-firebase-crashreporting-s5qjx-b1e3b81007.json\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -222,8 +317,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BEFBF31EA4001000EC10E7 /* inputAddressViewController.swift in Sources */,
+				D4D9AB811E9893AB0049C44A /* LocationTestViewController.swift in Sources */,
+				D4D1120D1E9DD360006C35BD /* StoreDetailViewController.swift in Sources */,
+				D4DAD4691E9728530077B6B3 /* StoreViewController.swift in Sources */,
+				D4BEFBEE1EA34E8600EC10E7 /* SelectAddressViewController.swift in Sources */,
+				D45D85771E9F1DB40081A170 /* StoreDetailTableCell.swift in Sources */,
 				D4F9A3DA1E93446600692C8A /* LeftViewController.swift in Sources */,
 				D4F9A3C81E933C2300692C8A /* ViewController.swift in Sources */,
+				D434DF0D1EA6EABB00FFABCD /* AccountViewController.swift in Sources */,
+				D4BEFBF11EA3659B00EC10E7 /* CustomButton.swift in Sources */,
 				D4F9A3DC1E9344A800692C8A /* RightViewController.swift in Sources */,
 				D4F9A3C61E933C2300692C8A /* AppDelegate.swift in Sources */,
 				D4F9A3D81E933EC800692C8A /* SignInViewController.swift in Sources */,
@@ -351,7 +454,31 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9JWJT4ZWMX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKShareKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookCore\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookLogin\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookShare\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Protobuf\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCrash/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GooglePlacePicker/Frameworks\"",
+					"\"${PODS_ROOT}/GooglePlaces/Frameworks\"",
+				);
 				INFOPLIST_FILE = MyJuice_Swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.sin.MyJuice-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -365,7 +492,30 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9JWJT4ZWMX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Bolts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKCoreKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKLoginKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FBSDKShareKit\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookCore\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookLogin\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/FacebookShare\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GTMSessionFetcher\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GoogleToolboxForMac\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Protobuf\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCrash/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/GooglePlacePicker/Frameworks\"",
+				);
 				INFOPLIST_FILE = MyJuice_Swift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.sin.MyJuice-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";

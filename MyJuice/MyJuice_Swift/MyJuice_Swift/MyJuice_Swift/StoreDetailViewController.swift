@@ -207,10 +207,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
     
     
     
-    
-    
-    
-    
     func getJsonData(myPlaceID:String){
         
         

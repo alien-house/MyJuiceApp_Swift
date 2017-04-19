@@ -457,7 +457,7 @@ which you can order</string>
             </objects>
             <point key="canvasLocation" x="-967" y="1056"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="vdB-bf-xZi">
             <objects>
                 <viewController id="i6f-hl-2K7" sceneMemberID="viewController">
@@ -470,13 +470,13 @@ which you can order</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="IRD-Wh-Kgq"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="IRD-Wh-Kgq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edt-B4-aDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1241" y="2779"/>
+            <point key="canvasLocation" x="-1268" y="2838"/>
         </scene>
-        <!--Checkout-->
+        <!--View Controller-->
         <scene sceneID="FQx-Uj-YEQ">
             <objects>
                 <viewController id="E68-o2-C04" sceneMemberID="viewController">
@@ -489,16 +489,16 @@ which you can order</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Checkout" id="NGt-u3-G5K"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="NGt-u3-G5K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ar-6V-EOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="2779"/>
+            <point key="canvasLocation" x="-476" y="2860"/>
         </scene>
-        <!--Account-->
+        <!--Account View Controller-->
         <scene sceneID="15m-Dz-eo9">
             <objects>
-                <viewController id="0lv-TR-XiT" sceneMemberID="viewController">
+                <viewController id="0lv-TR-XiT" customClass="AccountViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IYK-yk-c7i"/>
                         <viewControllerLayoutGuide type="bottom" id="HfV-9f-yhE"/>
@@ -506,13 +506,22 @@ which you can order</string>
                     <view key="view" contentMode="scaleToFill" id="RRS-zG-MOY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第３" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYp-6a-ie7">
+                                <rect key="frame" x="153" y="128" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" id="4BA-Rt-Lc8"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="4BA-Rt-Lc8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-vh-gvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="2779"/>
+            <point key="canvasLocation" x="287" y="2861"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ldr-GS-uHq">

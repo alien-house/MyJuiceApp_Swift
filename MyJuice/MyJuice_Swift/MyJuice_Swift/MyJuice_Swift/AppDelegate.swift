@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
+import FacebookCore
 import GoogleMaps
 import GooglePlaces
 import Firebase
