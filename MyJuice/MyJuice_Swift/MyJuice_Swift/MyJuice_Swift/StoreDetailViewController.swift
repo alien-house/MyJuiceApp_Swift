@@ -30,10 +30,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         
         // get the data
         let myPlaceID:String = atai?["myPlaceID"] as! String
-//        getJsonData(myPlaceID: myPlaceID)
-        
-        
-//            self.getJsonData(myPlaceID: myPlaceID)
             
             //==========
             let str:String = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+myPlaceID+"&key=AIzaSyDO5cG0reH45LHZ9Y-Vfw93uSUZQBH4r-g"

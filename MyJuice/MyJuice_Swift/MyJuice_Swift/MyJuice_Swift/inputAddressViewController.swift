@@ -83,7 +83,7 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
         print("sender.tag:\(button.tag)")
         
         // アラート表示
-        let alert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "title", message: "It has saved!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             print("Action OK!!")
         }

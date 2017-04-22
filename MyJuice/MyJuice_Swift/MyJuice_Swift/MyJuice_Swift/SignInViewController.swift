@@ -7,20 +7,28 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController  {
     
     @IBOutlet weak var leftView: UIView!
     @IBOutlet weak var rightView: UIView!
     
+    var ref: FIRDatabaseReference!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
 //        loginButton.center = view.center
-//        
 //        view.addSubview(loginButton)
-        // Do any additional setup after loading the view, typically from a nib.
         
+        
+        //refrence database on firebase
+        self.ref = FIRDatabase.database().reference()
+        
+        //save the data
+        var username:String = "oooooooo"
+        self.ref.child("youandi").setValue(["username": username])
     }
     
 //    func setup(){

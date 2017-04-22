@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MOy-lZ-Twd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6eF-Sg-6Ha">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,12 +23,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xuu-vU-ZAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="-591"/>
+            <point key="canvasLocation" x="-775" y="-302"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="oj8-Mr-wZY">
             <objects>
-                <viewController id="1tE-aP-48f" customClass="SignInViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInView" id="1tE-aP-48f" customClass="SignInViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="orf-3d-H6q"/>
                         <viewControllerLayoutGuide type="bottom" id="bMR-j5-ebS"/>
@@ -76,7 +76,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LpJ-Jx-Dbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="880.79999999999995" y="-590.55472263868069"/>
+            <point key="canvasLocation" x="-15" y="-301"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -103,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1682" y="309"/>
+            <point key="canvasLocation" x="-1580" y="304"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="uaI-JJ-3eG">
@@ -177,6 +177,9 @@
                                 <rect key="frame" x="203" y="590" width="156" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="choose"/>
+                                <connections>
+                                    <segue destination="cF2-Kt-60v" kind="show" id="78H-Xg-w9C"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIR-BX-wGR">
                                 <rect key="frame" x="16" y="590" width="156" height="69"/>
@@ -199,7 +202,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lM-CQ-DDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2711" y="642"/>
+            <point key="canvasLocation" x="-106" y="2117"/>
+        </scene>
+        <!--Checkout-->
+        <scene sceneID="g4n-hQ-0dm">
+            <objects>
+                <viewController id="cF2-Kt-60v" customClass="CheckoutViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qny-mH-p4X"/>
+                        <viewControllerLayoutGuide type="bottom" id="HZV-du-w70"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ggE-F7-ivr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uw1-bt-UQs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="521"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="checkoutTableCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="checkoutTableCell" id="Y0j-qR-FxW" customClass="CheckoutTableCell" customModule="MyJuice_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y0j-qR-FxW" id="IKc-xF-xQ3">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIS-0q-fLN">
+                                                    <rect key="frame" x="8" y="12" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V4-J5-sCg">
+                                                    <rect key="frame" x="292" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checoutLabel" destination="LIS-0q-fLN" id="Bey-d2-0bU"/>
+                                            <outlet property="checoutStateLabel" destination="2V4-J5-sCg" id="U4K-83-W8M"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Checkout" id="5AJ-nA-zDb">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="jzw-le-lAc"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="checkoutTable" destination="Uw1-bt-UQs" id="gVF-I6-KhT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g3m-f4-V0J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="2117"/>
         </scene>
         <!--Location Test View Controller-->
         <scene sceneID="fSN-pD-jq7">
@@ -217,12 +281,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPl-b5-uo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4567.1999999999998" y="484.40779610194909"/>
+            <point key="canvasLocation" x="1446" y="2117"/>
         </scene>
-        <!--Left View Controller-->
+        <!--Sign In User View Controller-->
         <scene sceneID="aNK-tv-ydd">
             <objects>
-                <viewController restorationIdentifier="leftViewController" storyboardIdentifier="leftViewController" id="fkm-r1-qmP" customClass="LeftViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="SignInUserView" storyboardIdentifier="SignInUserView" id="fkm-r1-qmP" customClass="SignInUserViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MXl-J7-dlB"/>
                         <viewControllerLayoutGuide type="bottom" id="qMh-hY-CEY"/>
@@ -231,12 +295,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuD-vD-bLc">
-                                <rect key="frame" x="20" y="20" width="334" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.82055490289999999" green="0.91424442640000003" blue="0.9648040926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Sign IN With Facebook"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or with email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71e-2K-Mgc">
                                 <rect key="frame" x="138" y="91" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -272,12 +330,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zpn-zr-cki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1752" y="-928"/>
+            <point key="canvasLocation" x="810" y="-2"/>
         </scene>
-        <!--Right View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="8fe-eH-lnD">
             <objects>
-                <viewController id="OzQ-G3-hIr" customClass="RightViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterView" id="OzQ-G3-hIr" customClass="RegisterViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ktX-Bk-WRY"/>
                         <viewControllerLayoutGuide type="bottom" id="n9j-T4-qiF"/>
@@ -327,12 +385,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KP0-jS-YKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1779" y="-324"/>
+            <point key="canvasLocation" x="809" y="-607"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Address View Controller-->
         <scene sceneID="Oul-9W-bwB">
             <objects>
-                <viewController id="eDM-cT-KPX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectAddressView" id="eDM-cT-KPX" customClass="SelectAddressViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FDt-wQ-tQ6"/>
                         <viewControllerLayoutGuide type="bottom" id="Ppe-n4-Lna"/>
@@ -474,7 +532,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edt-B4-aDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1268" y="2838"/>
+            <point key="canvasLocation" x="2705" y="1231"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FQx-Uj-YEQ">
@@ -493,7 +551,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ar-6V-EOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="2860"/>
+            <point key="canvasLocation" x="1929" y="1231"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="15m-Dz-eo9">
@@ -506,22 +564,31 @@ which you can order</string>
                     <view key="view" contentMode="scaleToFill" id="RRS-zG-MOY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第３" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYp-6a-ie7">
-                                <rect key="frame" x="153" y="128" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="4BA-Rt-Lc8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-vh-gvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="287" y="2861"/>
+            <point key="canvasLocation" x="3518" y="1232"/>
+        </scene>
+        <!--Account Detail View Controller-->
+        <scene sceneID="uEX-pL-Rvi">
+            <objects>
+                <viewController storyboardIdentifier="AccountDetailView" id="0q7-jL-CPc" customClass="AccountDetailViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xcH-v0-4zL"/>
+                        <viewControllerLayoutGuide type="bottom" id="H4X-md-96q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JAy-0E-w4c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6X9-s2-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4161" y="1231"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ldr-GS-uHq">
@@ -540,7 +607,7 @@ which you can order</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKG-YA-twi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-476" y="2003"/>
+            <point key="canvasLocation" x="2754" y="374"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ztq-Ih-jIh">
@@ -558,7 +625,7 @@ which you can order</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHC-sF-cNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="642"/>
+            <point key="canvasLocation" x="-967" y="2117"/>
         </scene>
     </scenes>
 </document>
