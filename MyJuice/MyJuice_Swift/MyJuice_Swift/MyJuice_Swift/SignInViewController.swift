@@ -27,8 +27,8 @@ class SignInViewController: UIViewController  {
         self.ref = FIRDatabase.database().reference()
         
         //save the data
-        var username:String = "oooooooo"
-        self.ref.child("youandi").setValue(["username": username])
+//        var username:String = "oooooooo"
+//        self.ref.child("youandi").setValue(["username": username])
     }
     
 //    func setup(){

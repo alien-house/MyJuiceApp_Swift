@@ -20,6 +20,9 @@ class SignInUserViewController: UIViewController {
     
     var userProfile : NSDictionary!
     
+    @IBOutlet weak var email_input: UITextField!
+    @IBOutlet weak var password_input: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
