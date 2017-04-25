@@ -9,12 +9,10 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-
 import FacebookCore
 import FacebookLogin
 import Firebase
 import FirebaseAuth
-
 
 class SignInUserViewController: UIViewController {
     
@@ -29,7 +27,6 @@ class SignInUserViewController: UIViewController {
         // check facebook accessToken
         if let accessToken = AccessToken.current {
             // User is logged in, use 'accessToken' here.
-            
             print("もうしてるよ.")
             print(accessToken)
         }
@@ -38,7 +35,6 @@ class SignInUserViewController: UIViewController {
         let myLoginButton = UIButton(type:.custom)
         let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
         myLoginButton.backgroundColor = fbcolor
-       // (red:0.59, green:0.89, blue:1.51, alpha:1.0)//#colorLiteral
 
         myLoginButton.frame = CGRect(x:20, y:20, width:330, height:60);
         myLoginButton.layer.cornerRadius = 2.0
@@ -49,7 +45,12 @@ class SignInUserViewController: UIViewController {
         
         // Add the button to the view
         view.addSubview(myLoginButton)
-
+        
+        let mailtext = UILabel(frame: CGRect(x:0, y:90, width:self.view.frame.width, height:60))
+        mailtext.text = "or with email"
+        mailtext.textAlignment = NSTextAlignment.center
+        view.addSubview(mailtext)
+        
         
     }
     
