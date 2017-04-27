@@ -16,13 +16,79 @@ import FirebaseAuth
 
 class SignInUserViewController: UIViewController {
     
+    let inputsContainerView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 4
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    let emailTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Email"
+        tf.autocapitalizationType = UITextAutocapitalizationType.none
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let emailSeparatorView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Password"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.isSecureTextEntry = true
+        return tf
+    }()
+    
+    let myLoginButton:UIButton = {
+        let btn = UIButton(type:.custom)
+        let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
+        btn.backgroundColor = fbcolor
+        //        btn.frame = CGRect(x:20, y:20, width:330, height:50);
+        btn.layer.cornerRadius = 4.0
+        btn.setTitle("Sign In with Facebook", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
+        return btn
+    }()
+    
+    let signInAccountButton:UIButton = {
+        let btn = UIButton(type:.custom)
+        let fbcolor:UIColor = #colorLiteral(red: 0.9648040926, green: 0.4545456292, blue: 0.4881974511, alpha: 1)
+        btn.backgroundColor = fbcolor
+        //        btn.frame = CGRect(x:20, y:20, width:330, height:50);
+        btn.layer.cornerRadius = 4.0
+        btn.setTitle("Sign In Account", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
+        return btn
+    }()
+    
     var userProfile : NSDictionary!
     
-    @IBOutlet weak var email_input: UITextField!
-    @IBOutlet weak var password_input: UITextField!
+//    @IBOutlet weak var email_input: UITextField!
+//    @IBOutlet weak var password_input: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
+        
+        let mailtext = UILabel(frame: CGRect(x:0, y:90, width:self.view.frame.width, height:60))
+        mailtext.text = "or with email"
+        mailtext.textAlignment = NSTextAlignment.center
+        view.addSubview(mailtext)
         
         // check facebook accessToken
         if let accessToken = AccessToken.current {
@@ -31,28 +97,58 @@ class SignInUserViewController: UIViewController {
             print(accessToken)
         }
         
-        // Add a custom login button to your app  #3B5997
-        let myLoginButton = UIButton(type:.custom)
-        let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
-        myLoginButton.backgroundColor = fbcolor
-
-        myLoginButton.frame = CGRect(x:20, y:20, width:330, height:60);
-        myLoginButton.layer.cornerRadius = 2.0
-        myLoginButton.setTitle("Sign In with Facebook", for: .normal)
-        
-        // Handle clicks on the button
-        myLoginButton.addTarget(self, action: #selector(self.loginButtonClicked), for: .touchUpInside)
-        
-        // Add the button to the view
+        view.addSubview(inputsContainerView)
+        setupInputsContainerView()
         view.addSubview(myLoginButton)
-        
-        let mailtext = UILabel(frame: CGRect(x:0, y:90, width:self.view.frame.width, height:60))
-        mailtext.text = "or with email"
-        mailtext.textAlignment = NSTextAlignment.center
-        view.addSubview(mailtext)
-        
+        view.addSubview(signInAccountButton)
+        setupButton()
         
     }
+    
+    
+    func setupButton(){
+        
+        myLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myLoginButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        myLoginButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        myLoginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        signInAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        signInAccountButton.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        signInAccountButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        signInAccountButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        
+    }
+    
+    func setupInputsContainerView(){
+        
+        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1, constant: -40).isActive = true
+        inputsContainerView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        
+        inputsContainerView.addSubview(emailTextField)
+        inputsContainerView.addSubview(emailSeparatorView)
+        inputsContainerView.addSubview(passwordTextField)
+        
+        emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
+        
+        emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
+        
+    }
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,8 +170,10 @@ class SignInUserViewController: UIViewController {
                 print(accessToken)
                 print(FBSDKAccessToken.current().tokenString)
                 //
+                print("90900090909090909")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 
+                print("=-=-====--===-=")
                 print("credential?!")
                 print(credential)
                 
@@ -83,8 +181,9 @@ class SignInUserViewController: UIViewController {
                 //Firebase login
                 FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                     if error != nil {
-                        
-                        
+                        print("error!!!!!!!")
+                        print(error)
+                        self.alert_win(error:(error?.localizedDescription)!)
                     }else{
                         
                         if FIRAuth.auth()?.currentUser != nil {
@@ -99,19 +198,7 @@ class SignInUserViewController: UIViewController {
                             let photoURL = user?.photoURL
                             
                             
-                            
-                            
-                            //after login, gonna go to map setting
-                            let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
-                            
-                            let navi = UINavigationController(rootViewController: SelectAddressViewController)
-                            // setting animation
-                            navi.modalTransitionStyle = .crossDissolve
-                            self.present(navi, animated: true, completion: nil)
-                            
-                            
-                            
-                            
+                            self.goNextPage()
                             
                         }else{
                             print("no exist!")
@@ -119,9 +206,6 @@ class SignInUserViewController: UIViewController {
                         
                     }
                 }
-                
-                
-                
                 
                 self.returnUserData()
             }
@@ -150,6 +234,37 @@ class SignInUserViewController: UIViewController {
         
     }
     
+    
+    func signInButtonClicked(){
+        
+        let email: String! = self.emailTextField.text
+        let password: String! = self.passwordTextField.text
+        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            
+            if error == nil{
+                print("suceess!!")
+                self.goNextPage()
+            }else{
+                self.alert_win(error: (error?.localizedDescription)!)
+            }
+                
+        }
+        
+    }
+    
+    func goNextPage(){
+        
+        //after login, gonna go to map setting
+        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
+        
+        let navi = UINavigationController(rootViewController: SelectAddressViewController)
+        // setting animation
+        navi.modalTransitionStyle = .crossDissolve
+        self.present(navi, animated: true, completion: nil)
+        
+    }
+    
+    
     func logout(){
         let firebaseAuth = FIRAuth.auth()
         do {
@@ -157,6 +272,17 @@ class SignInUserViewController: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+    }
+    
+    func alert_win(error:String){
+        
+        let alert: UIAlertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            // something
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }

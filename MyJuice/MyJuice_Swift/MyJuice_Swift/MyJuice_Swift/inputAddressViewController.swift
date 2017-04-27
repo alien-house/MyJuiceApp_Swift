@@ -35,7 +35,6 @@ class inputAddressViewController: UIViewController, CLLocationManagerDelegate, G
         // this view controller, not one further up the chain.
         definesPresentationContext = true
         
-        
     }
     
     
@@ -51,10 +50,10 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
         searchController?.isActive = false
         // Do something with the selected place.
         searchController?.searchBar.text = place.formattedAddress
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
-        
+//        print("Place name: \(place.name)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
+//        
         
         // Buttonを生成する
         let button = UIButton()

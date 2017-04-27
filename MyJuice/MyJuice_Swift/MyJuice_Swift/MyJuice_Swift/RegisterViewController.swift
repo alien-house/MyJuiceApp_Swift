@@ -34,50 +34,103 @@ class RegisterViewController: UIViewController {
         return view
     }()
     
-    let nameTextField: UITextField = {
+    let firstnameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Name"
+        tf.placeholder = "First Name"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
     
     let nameSeparatorView:UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(r:220,g:220,b:220)
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    @IBOutlet weak var firstname_input: UITextField!
-    @IBOutlet weak var lastname_input: UITextField!
-    @IBOutlet weak var email_input: UITextField!
-    @IBOutlet weak var password_input: UITextField!
+    let lastnameTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Last Name"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        return tf
+    }()
+    
+    let lnameSeparatorView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let emailTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Email"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.autocapitalizationType = UITextAutocapitalizationType.none
+        return tf
+    }()
+    
+    let emailSeparatorView:UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Password"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.isSecureTextEntry = true
+        return tf
+    }()
+    
+    let myLoginButton:UIButton = {
+        let btn = UIButton(type:.custom)
+        let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
+        btn.backgroundColor = fbcolor
+//        btn.frame = CGRect(x:20, y:20, width:330, height:50);
+        btn.layer.cornerRadius = 4.0
+        btn.setTitle("Connect with Facebook", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
+        return btn
+    }()
+    
+    let createAccountButton:UIButton = {
+        let btn = UIButton(type:.custom)
+        let fbcolor:UIColor = #colorLiteral(red: 0.9647058824, green: 0.8, blue: 0.1834138991, alpha: 1)
+        btn.backgroundColor = fbcolor
+//        btn.frame = CGRect(x:20, y:20, width:330, height:50);
+        btn.layer.cornerRadius = 4.0
+        btn.setTitle("Create Account", for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.addTarget(self, action: #selector(createButtonClicked), for: .touchUpInside)
+        return btn
+    }()
+    
     var ref: FIRDatabaseReference!
     var userProfile : NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor(r:61,g:90,b:151)
-        
-        let myLoginButton = UIButton(type:.custom)
-        let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
-        myLoginButton.backgroundColor = fbcolor
-        myLoginButton.frame = CGRect(x:20, y:20, width:330, height:60);
-        myLoginButton.layer.cornerRadius = 2.0
-        myLoginButton.setTitle("Connect with Facebook", for: .normal)
-        
-        // Handle clicks on the button
-        myLoginButton.addTarget(self, action: #selector(self.loginButtonClicked), for: .touchUpInside)
-        view.addSubview(myLoginButton)
+        view.backgroundColor = UIColor(r:237,g:237,b:237)
         
         let mailtext = UILabel(frame: CGRect(x:0, y:90, width:self.view.frame.width, height:60))
         mailtext.text = "or with email"
         mailtext.textAlignment = NSTextAlignment.center
         view.addSubview(mailtext)
         
-        
         view.addSubview(inputsContainerView)
         setupInputsContainerView()
+        
+        view.addSubview(myLoginButton)
+        view.addSubview(createAccountButton)
+        setupButton()
         
         if FIRAuth.auth()?.currentUser != nil {
             // User is signed in.
@@ -89,25 +142,69 @@ class RegisterViewController: UIViewController {
         
     }
     
+    func setupButton(){
+        
+        myLoginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myLoginButton.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
+        myLoginButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        myLoginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        
+        createAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        createAccountButton.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        createAccountButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        createAccountButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        
+    }
+    
     func setupInputsContainerView(){
         
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -30).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1, constant: -40).isActive = true
         inputsContainerView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         
-        
-        inputsContainerView.addSubview(nameTextField)
+        inputsContainerView.addSubview(firstnameTextField)
         inputsContainerView.addSubview(nameSeparatorView)
+        inputsContainerView.addSubview(lastnameTextField)
+        inputsContainerView.addSubview(lnameSeparatorView)
+        inputsContainerView.addSubview(emailTextField)
+        inputsContainerView.addSubview(emailSeparatorView)
+        inputsContainerView.addSubview(passwordTextField)
         
-        nameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
-        nameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
-        nameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4).isActive = true
+        firstnameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        firstnameTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
+        firstnameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        firstnameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4).isActive = true
         
-        nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor)
-        nameSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor)
-        nameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor)
+        nameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        nameSeparatorView.topAnchor.constraint(equalTo: firstnameTextField.bottomAnchor).isActive = true
+        nameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        nameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        lastnameTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        lastnameTextField.topAnchor.constraint(equalTo: firstnameTextField.bottomAnchor).isActive = true
+        lastnameTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        lastnameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4).isActive = true
+        
+        lnameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        lnameSeparatorView.topAnchor.constraint(equalTo: lastnameTextField.bottomAnchor).isActive = true
+        lnameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        lnameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: lastnameTextField.bottomAnchor).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4).isActive = true
+        
+        emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/4).isActive = true
         
     }
     
@@ -151,10 +248,7 @@ class RegisterViewController: UIViewController {
 //                            let email = user?.email
 //                            let uid = user?.uid
 //                            let photoURL = user?.photoURL
-//                            
-//                            
-//                            
-//                            
+//
 //                            //after login, gonna go to map setting
 //                            let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
 //                            
@@ -163,10 +257,7 @@ class RegisterViewController: UIViewController {
 //                            navi.modalTransitionStyle = .crossDissolve
 //                            self.present(navi, animated: true, completion: nil)
 //                            
-//                            
-//                            
-//                            
-//                            
+//
 //                        }else{
 //                            print("no exist!")
 //                        }
@@ -198,9 +289,9 @@ class RegisterViewController: UIViewController {
                 // putting user data into dictonary
                 self.userProfile = result as! NSDictionary
                 print(self.userProfile)
-                self.firstname_input.text = self.userProfile["first_name"] as! String
-                self.lastname_input.text  = self.userProfile["last_name"] as! String
-                self.email_input.text     = self.userProfile["email"] as! String
+                self.firstnameTextField.text = self.userProfile["first_name"] as! String
+                self.lastnameTextField.text  = self.userProfile["last_name"] as! String
+                self.emailTextField.text     = self.userProfile["email"] as! String
 
                 
             }
@@ -209,52 +300,49 @@ class RegisterViewController: UIViewController {
     }
 
     
-    @IBAction func click_create(_ sender: UIButton) {
-        print(self.firstname_input)
+    func createButtonClicked() {
         
-        let email: String! = self.email_input.text
-        let username: String! = self.firstname_input.text
-        let password: String! = self.password_input.text
-        
+        let email: String! = self.emailTextField.text
+        let username: String! = self.firstnameTextField.text
+        let password: String! = self.passwordTextField.text
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
-            
-            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                print("🌟",errCode)
-                switch errCode {
-                case .errorCodeWrongPassword:
-                    self.alert_win(error:LoginErrorCode.WRONG_PASSWORD)
-                    break;
-                case .errorCodeInvalidEmail:
-                    self.alert_win(error:LoginErrorCode.INVALID_EMAIL)
-                    break;
-                case .errorCodeUserNotFound:
-                    self.alert_win(error:LoginErrorCode.USER_NOT_FOUND)
-                    break;
-                case .errorCodeEmailAlreadyInUse:
-                    self.alert_win(error:LoginErrorCode.EMAIL_ALREADY_IN_USE)
-                    break;
-                case .errorCodeWeakPassword:
-                    self.alert_win(error:LoginErrorCode.WEAK_PASSWORD)
-                    break;
-                default:
-                    self.alert_win(error:LoginErrorCode.PROBLEM_CONNECTING)
-                    break;
+            if error != nil {
+                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                    print("🌟",(error?.localizedDescription)!)
+//                    switch errCode {
+//                    case .errorCodeWrongPassword:
+//                        self.alert_win(error:LoginErrorCode.WRONG_PASSWORD)
+//                        break;
+//                    case .errorCodeInvalidEmail:
+//                        self.alert_win(error:LoginErrorCode.INVALID_EMAIL)
+//                        break;
+//                    case .errorCodeUserNotFound:
+//                        self.alert_win(error:LoginErrorCode.USER_NOT_FOUND)
+//                        break;
+//                    case .errorCodeEmailAlreadyInUse:
+//                        self.alert_win(error:LoginErrorCode.EMAIL_ALREADY_IN_USE)
+//                        break;
+//                    case .errorCodeWeakPassword:
+//                        self.alert_win(error:LoginErrorCode.WEAK_PASSWORD)
+//                        break;
+//                    default:
+//                        self.alert_win(error:LoginErrorCode.PROBLEM_CONNECTING)
+//                        break;
+//                    }
+                     self.alert_win(error:(error?.localizedDescription)!)
+                    return
                     
                 }
-                
-                return
-                
-            }else{
+            } else {
+                print("all good... continue")
                 //If there is no error...
                 self.ref = FIRDatabase.database().reference()
                 self.ref.child("users").child(user!.uid).setValue(["email": email])
                 self.ref.child("users").child(user!.uid).setValue(["username": username])
                 self.ref.child("users").child(user!.uid).setValue(["password": password])
-                
-                
+                self.goNextPage()
             }
-            
             
         }
         
@@ -262,9 +350,21 @@ class RegisterViewController: UIViewController {
     
     
     
+    func goNextPage(){
+        
+        //after login, gonna go to map setting
+        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
+        
+        let navi = UINavigationController(rootViewController: SelectAddressViewController)
+        // setting animation
+        navi.modalTransitionStyle = .crossDissolve
+        self.present(navi, animated: true, completion: nil)
+        
+    }
+    
     func alert_win(error:String){
         
-        let alert: UIAlertController = UIAlertController(title: "Something Wrong", message: error, preferredStyle: .alert)
+        let alert: UIAlertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             // something
         }

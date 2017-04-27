@@ -100,8 +100,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                         // main thred
                         DispatchQueue.main.async {
                             print("main.async")
-                            //                print(self.storeData["location"])
-//                            print(self.storeData["location"])
                             let loc = self.storeData["location"]
                             //                print(loc["lat"]!)
                             print((loc as! Dictionary)["lat"]!)
@@ -137,22 +135,20 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         let navBarHeight = self.navigationController?.navigationBar.frame.size.height
         
-       
-        
-        
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 17.0)
         let frame:CGRect = CGRect(x: 0, y: statusBarHeight+(navBarHeight! as CGFloat), width: self.view.frame.width, height: 200)
         self.mapView = GMSMapView.map(withFrame: frame, camera: camera)
         self.view.addSubview(self.mapView!)
         self.mapView.delegate = self
         
+//        DetailTable.origin.y  = 200
+        DetailTable.frame.origin = CGPoint(x: 0, y: 0)
+        
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latitude, longitude:longitude)
         marker.map = self.mapView
         
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 4
@@ -189,12 +185,9 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         return 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
-        return "What a What aWhat a"
-    }
-    
-    
-    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+//        return "What a What aWhat a"
+//    }
     
     @IBAction func DetailCancelBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)

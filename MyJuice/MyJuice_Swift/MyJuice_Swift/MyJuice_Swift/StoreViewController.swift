@@ -15,7 +15,6 @@ import GooglePlacePicker
 
 class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
-    
     var locationManager: CLLocationManager!
     var mapView : GMSMapView!
     var placesClient: GMSPlacesClient!
@@ -24,40 +23,23 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     //Lcation(Place ID) of The Brunch Store'
     let placeIDs = ["ChIJEenQuNNzhlQRYBLvIjoqPJE","ChIJdd9ipdNzhlQRTeCkanpMc8s","ChIJ5_L29tNzhlQR84NgJCxQ8j4"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        placesClient = GMSPlacesClient.shared()
         print("viewDidLoad")
         
-        
         if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.startUpdatingLocation()
+            print("ゞlocationServicesEnabled")
+            self.locationManager = CLLocationManager()
+            self.locationManager.delegate = self
+            self.locationManager.startUpdatingLocation()
         }
         
-        loadViews()
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.stopUpdatingLocation()
+        let status = CLLocationManager.authorizationStatus()
+        print("authorizationStatus:\(status)");
+        if(status == .notDetermined) {
+            self.locationManager.requestWhenInUseAuthorization()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func loadViews() {
-        print("loadView")
-        // Create a GMSCameraPosition that tells the map to display the
+        
         
         let camera = GMSCameraPosition.camera(withLatitude: 49.277143, longitude: -123.129742, zoom: 16.0)
         
@@ -68,13 +50,33 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         self.mapView.delegate = self // why here...? otherwise error will be occured
         
         
-        // Creates a marker in the center of the map.
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-//        marker.title = "Sydney"
-//        marker.snippet = "Australia"
-//        marker.map = self.mapView
-//        
+        
+        
+        
+        
+        
+        
+        
+//        loadViews()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    
+    func loadViews() {
+        print("loadView")
+  
+        // Create a GMSCameraPosition that tells the map to display the
+//        let camera = GMSCameraPosition.camera(withLatitude: 49.277143, longitude: -123.129742, zoom: 16.0)
+        
+        
         
         placesClient = GMSPlacesClient.shared()
         // A hotel in Saigon with an attribution.
@@ -111,7 +113,7 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
                 }
             })
         }
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
         
     }
     
@@ -128,7 +130,10 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         }
     }
     
+        
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("🌾didUpdateLocations");
+        
         guard let newLocation = locations.last,
             CLLocationCoordinate2DIsValid(newLocation.coordinate) else {
                 print("Error");
@@ -138,6 +143,11 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         let now = GMSCameraPosition.camera(withLatitude: newLocation.coordinate.latitude,
                                            longitude:newLocation.coordinate.longitude,zoom:17)
         self.mapView.camera = now
+        locationManager.stopUpdatingLocation()
+        
+        
+        
+        
 //
 //        let marker_now = GMSMarker()
 //        marker_now.isFlat = true
@@ -168,13 +178,6 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         
         
     }
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("着てる？")
-//    }
-    
-    
     
     
     

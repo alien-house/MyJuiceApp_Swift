@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+//http://stackoverflow.com/questions/26158768/how-to-get-textlabel-of-selected-row-in-swift
+
 class CheckoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var checkoutTable: UITableView!
@@ -20,9 +23,9 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         self.checkoutTable.delegate = self
         self.checkoutTable.dataSource = self
         
-        self.objects.add("test1")
-        self.objects.add("test2")
-        self.objects.add("test3")
+        self.objects.add("Payment")
+        self.objects.add("Credit Card")
+        self.objects.add("ETA")
         
         self.checkoutTable.reloadData()
         
@@ -35,13 +38,14 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-//        if let cell:CheckoutTableCell = self.checkoutTable.dequeueReusableCell(withIdentifier: "checkoutTableCell") as? CheckoutTableCell{
-//        
-//            cell.checoutLabel.text = self.objects.objectAtIndex(indexPath.row) as? String
-//        
-//            return cell
-//            
-//        }
+        if let cell:CheckoutTableCell = self.checkoutTable.dequeueReusableCell(withIdentifier: "checkoutTableCell") as? CheckoutTableCell{
+        
+            cell.checoutLabel.text = self.objects.object(at: indexPath.row) as? String
+            cell.checoutStateLabel.text = "sssss"
+            
+            return cell
+            
+        }
         return UITableViewCell()
     }
     
@@ -49,5 +53,10 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         return 1
     }
     
+    @IBAction func btnBack(_ sender: UIBarButtonItem) {
+//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     
 }
