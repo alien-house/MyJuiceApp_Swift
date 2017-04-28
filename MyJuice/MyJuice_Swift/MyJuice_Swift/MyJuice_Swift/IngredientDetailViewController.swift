@@ -10,21 +10,27 @@ import UIKit
 
 class IngredientDetailViewController: UIViewController {
     
-    //Model 
-//    var ingredient: Ingredient?
+    var image: String?
     
-    @IBOutlet var ingredient1ImageView: UIImageView!
-    
-
+    @IBOutlet var Ingredient1: UIImageView!
+    @IBOutlet var Ingredient2: UIImageView!
+    @IBOutlet var Ingredient3: UIImageView!
     var ingredient: UIImage?
+    
+    @IBOutlet var IngredientPrice: UILabel!
+    
+//    var numberArray = NSMutableArray()
+//    var selectedArray=NSMutableArray()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        ingredient1ImageView.image = ingredient?.image
+        print(self.image!)
+        
+        Ingredient1.image = UIImage(named: self.image! )
+        
     }
     
-    
-    
 }
+

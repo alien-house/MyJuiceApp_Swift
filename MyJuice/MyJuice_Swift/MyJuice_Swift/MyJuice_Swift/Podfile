@@ -12,7 +12,9 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Crash'
-pod 'Alamofire', '~> 4.4'
+pod 'Alamofire'
+pod 'SwiftyJSON'
+
 end
 
 

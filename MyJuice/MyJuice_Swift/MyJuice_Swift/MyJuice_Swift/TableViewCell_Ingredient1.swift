@@ -8,15 +8,17 @@
 
 import UIKit
 
-class TableViewCell_Ingredient1: UITableViewCell {
 
+
+class TableViewCell_Ingredient1: UITableViewCell, UITableViewDelegate {
+    
+    var atai:AnyObject?
+    
     @IBOutlet weak var Ingredient1: UIImageView!
     @IBOutlet weak var Ingredient_label1: UILabel!
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    //    {
-    //        myIndex = indexPath.row
-    //        performSegue(withIdentifier: "showIngredientSegue", sender: self)
-    //    }
-    
+    func viewDidLoad() {
+        
+        
+    }
 }

@@ -49,15 +49,7 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         view = self.mapView
         self.mapView.delegate = self // why here...? otherwise error will be occured
         
-        
-        
-        
-        
-        
-        
-        
-        
-//        loadViews()
+        loadViews()
         
     }
     
