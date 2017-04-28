@@ -31,14 +31,16 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         //prepear the table
         self.DetailTable.delegate = self
         self.DetailTable.dataSource = self
+        self.DetailTable.estimatedRowHeight = 60
+        self.DetailTable.rowHeight = UITableViewAutomaticDimension
         
         // get the data
         let myPlaceID:String = atai?["myPlaceID"] as! String
-            
-            //==========
-            let str:String = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+myPlaceID+"&key=AIzaSyDO5cG0reH45LHZ9Y-Vfw93uSUZQBH4r-g"
-            let url = URL(string: str)
-            let urlRequest = URLRequest(url: url!)
+        
+        //==========
+        let str:String = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+myPlaceID+"&key=AIzaSyDO5cG0reH45LHZ9Y-Vfw93uSUZQBH4r-g"
+        let url = URL(string: str)
+//        let urlRequest = URLRequest(url: url!)
         
         
         print("🙄")
@@ -85,11 +87,8 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                         self.makeMap(latitude: loc["lat"]!, longitude: loc["lng"]!)
                         self.DetailTable.reloadData()
                     }
+                    
                 }
-                
-                
-                
-                
                 
                 
             }
@@ -204,7 +203,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         self.view.addSubview(self.mapView!)
         self.mapView.delegate = self
         
-//        DetailTable.origin.y  = 200
         DetailTable.frame.origin = CGPoint(x: 0, y: 0)
         
         let marker = GMSMarker()
@@ -226,26 +224,25 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
             if(!self.storeDataArray.isEmpty){
                 if indexPath.row == 3{
                     print("😸")
-                    print(self.storeHours[0])
-                    print(self.storeHours[1])
 //                    print( String(describing: type(of: self.storeHours["weekday_text"])))
 //                   let JSON = self.storeHours["weekday_text"] as! NSArray
 //                    cell.DetailLabel.text = self.storeData["weekday_text"][0]
                     
-                    
-                    // 配列のループ(インデックス込み)
+                    var hourString:String = ""
                     for (i, value) in self.storeHours.enumerated() {
                         print("👮")
-                        print(value)
-                        print(i)
+                        hourString += (value + "\n")
                     }
-                    
+                    cell.DetailLabel.text = hourString
                     
                     
                 }else{
                     print(self.storeDataArray[indexPath.row])
                     cell.DetailLabel.text = self.storeDataArray[indexPath.row]
                 }
+                cell.DetailLabel!.numberOfLines = 0
+                cell.DetailLabel.sizeToFit()
+                cell.DetailLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
             }
 //            cell.DetailLabel.text = "ddddd"
 //            print("いつ？")

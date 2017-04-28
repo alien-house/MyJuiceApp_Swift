@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ihc-UI-85S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gjr-zw-9At">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +14,7 @@
         <scene sceneID="gt1-Jl-8KK">
             <objects>
                 <navigationController id="6eF-Sg-6Ha" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qry-YD-old">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qry-YD-old">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -150,18 +151,32 @@
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoreDetailTableCellID" id="enc-1Z-Xp4" customClass="StoreDetailTableCell" customModule="MyJuice_Swift" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="enc-1Z-Xp4" id="qPB-A3-90z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="enc-1Z-Xp4" id="qPB-A3-90z">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM9-lB-Uu4">
-                                                                    <rect key="frame" x="21" y="11" width="346" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mza-e4-A1q">
+                                                                    <rect key="frame" x="17" y="11" width="42" height="20.5"/>
+                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM9-lB-Uu4">
+                                                                    <rect key="frame" x="17" y="13" width="323" height="12.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="42" id="GsR-Bp-W8Y"/>
+                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="pM9-lB-Uu4" secondAttribute="bottom" constant="5" id="1Ga-Ef-35d"/>
+                                                                <constraint firstItem="pM9-lB-Uu4" firstAttribute="top" secondItem="qPB-A3-90z" secondAttribute="topMargin" constant="5" id="CYK-gr-PJW"/>
+                                                                <constraint firstItem="mza-e4-A1q" firstAttribute="centerY" secondItem="qPB-A3-90z" secondAttribute="centerY" id="DPG-3y-WqP"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="pM9-lB-Uu4" secondAttribute="trailing" constant="10" id="KAx-Gp-aPV"/>
+                                                                <constraint firstItem="pM9-lB-Uu4" firstAttribute="leading" secondItem="qPB-A3-90z" secondAttribute="leadingMargin" constant="10" id="MGu-6A-hhC"/>
+                                                                <constraint firstItem="mza-e4-A1q" firstAttribute="leading" secondItem="qPB-A3-90z" secondAttribute="leadingMargin" constant="9" id="dwb-K0-Rzk"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="pM9-lB-Uu4" secondAttribute="bottom" constant="10" id="fdy-4F-qQq"/>
+                                                            </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="DetailLabel" destination="pM9-lB-Uu4" id="4Rp-H8-DBV"/>
@@ -438,7 +453,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gjr-zw-9At" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rSa-qO-HSH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rSa-qO-HSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -550,7 +565,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ajD-fo-B6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
