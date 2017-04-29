@@ -13,6 +13,7 @@ import CoreLocation
 import GooglePlacePicker
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -42,8 +43,11 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         let url = URL(string: str)
 //        let urlRequest = URLRequest(url: url!)
         
-        
         print("🙄")
+        SVProgressHUD.show()
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        
+        
         Alamofire.request(url!).responseJSON { (responseData) -> Void in
             print("🤢")
             if((responseData.result.value) != nil) {
@@ -86,6 +90,7 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                         let loc = self.storeData
                         self.makeMap(latitude: loc["lat"]!, longitude: loc["lng"]!)
                         self.DetailTable.reloadData()
+                        SVProgressHUD.dismiss()
                     }
                     
                 }
@@ -341,7 +346,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
 //    }
     
 
-    
     
     
     
