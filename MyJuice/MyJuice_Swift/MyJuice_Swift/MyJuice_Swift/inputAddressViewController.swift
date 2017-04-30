@@ -8,15 +8,19 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Firebase
+import FirebaseAuth
 
 class inputAddressViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = FIRDatabase.database().reference()
         
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self as GMSAutocompleteResultsViewControllerDelegate
@@ -50,10 +54,10 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
         searchController?.isActive = false
         // Do something with the selected place.
         searchController?.searchBar.text = place.formattedAddress
-//        print("Place name: \(place.name)")
-//        print("Place address: \(place.formattedAddress)")
-//        print("Place attributions: \(place.attributions)")
-//        
+        print("Place name: \(place.name)")
+        print("Place address: \(String(describing: place.formattedAddress))")
+        print("Place attributions: \(place.attributions)")
+//
         
         // Buttonを生成する
         let button = UIButton()
@@ -73,13 +77,34 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
         self.view.addSubview(button)
         
         
-        
     }
     
     
     func onClick(_ sender: AnyObject){
         let button = sender as! UIButton
         print("sender.tag:\(button.tag)")
+        print("😄d")
+//        print(searchController?.searchBar.text!)
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                // User is signed in. Show home screen
+                
+                let  arr: [String] = ["testestes","rrrrr"]
+//                self.ref.child("users").child(user.uid).updateChildValues(["address": arr])
+                self.ref.child("users").child(user.uid).child("address").updateChildValues(["3": "dere"])
+                
+                //self.ref.child("users").child(user.uid).updateChildValues(["address": self.searchController?.searchBar.text!])
+//                self.ref.childByAutoId().setValue(["address": self.searchController?.searchBar.text!])
+//                self.ref.childByAutoId().setValue(["food": "yerd"])
+                
+            } else {
+                // No User is signed in. Show user the login screen
+                print("😄","nothing")
+            }
+        }
+        
+        
         
         // アラート表示
         let alert: UIAlertController = UIAlertController(title: "title", message: "It has saved!", preferredStyle: .alert)
