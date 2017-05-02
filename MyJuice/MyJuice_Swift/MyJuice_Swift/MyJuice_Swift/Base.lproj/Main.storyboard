@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MOy-lZ-Twd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6eF-Sg-6Ha">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <scene sceneID="gt1-Jl-8KK">
             <objects>
                 <navigationController id="6eF-Sg-6Ha" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qry-YD-old">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qry-YD-old">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -453,7 +453,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gjr-zw-9At" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rSa-qO-HSH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rSa-qO-HSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -565,7 +565,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ajD-fo-B6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -76,7 +76,14 @@ class SignInUserViewController: UIViewController {
         return btn
     }()
     
+    struct User {
+        let name: String = "name"
+        let email: String = "email"
+    }
+
+    var user = User()
     var userProfile : NSDictionary!
+    let userDefaults = UserDefaults.standard
     
 //    @IBOutlet weak var email_input: UITextField!
 //    @IBOutlet weak var password_input: UITextField!
@@ -103,8 +110,29 @@ class SignInUserViewController: UIViewController {
         view.addSubview(signInAccountButton)
         setupButton()
         
+        
+        userDefaults.register(defaults: ["DataStore": "default"])
+        saveData(str: "mushimushi")
+        print(readData())
     }
     
+    
+    func saveData(str: String){
+        
+        // Keyを指定して保存
+//        self.user = User(name: "夏目漱石",email:"ucyuujinoco@gmail.com")
+        
+        
+        userDefaults.set("夏目漱石", forKey: user.name)
+        userDefaults.synchronize()
+        
+    }
+    func readData() -> String {
+        // Keyを指定して読み込み
+        let str: String = userDefaults.object(forKey: user.name) as! String
+        
+        return str
+    }
     
     func setupButton(){
         

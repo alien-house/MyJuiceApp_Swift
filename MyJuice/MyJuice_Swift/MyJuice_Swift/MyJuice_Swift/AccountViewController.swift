@@ -13,7 +13,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let cellId = "cellId"
     var tableView: UITableView  =   UITableView()
-    let navTitle = ["Profile Settings","Payment Cards","Addresses"]
+    let navTitle = ["Profile","Payment Cards","Addresses"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func checkIfUserIsLoggedIn(){
         
-        
-        
         if FIRAuth.auth()?.currentUser != nil {
             // if already login
             
@@ -58,9 +56,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             // setting animation
             navi.modalTransitionStyle = .crossDissolve
             present(navi, animated: true, completion: nil)
-            
-            
-            
             
             
         }else{
@@ -88,6 +83,19 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = navTitle[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        //[no storyborad]
+        let nextVC: UIViewController = ProfileViewController()
+        
+        let navi = UINavigationController(rootViewController: nextVC)
+        navi.modalTransitionStyle = .crossDissolve
+        present(navi, animated: true, completion: nil)
+        
         
     }
     

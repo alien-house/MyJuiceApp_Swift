@@ -343,9 +343,7 @@ class RegisterViewController: UIViewController {
                 self.ref.child("users").child(user!.uid).setValue(["password": password])
                 self.goNextPage()
             }
-            
         }
-        
     }
     
     

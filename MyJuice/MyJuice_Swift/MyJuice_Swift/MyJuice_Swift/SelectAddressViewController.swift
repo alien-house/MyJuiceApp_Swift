@@ -11,6 +11,19 @@ import UIKit
 
 class SelectAddressViewController: UIViewController{
     
+    struct User {
+        let name: String = "name"
+        let email: String = "email"
+    }
+    var user = User()
+    let userDefaults = UserDefaults.standard
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let str: String = userDefaults.object(forKey: user.name) as! String
+        print("🤧")
+        print(str)
+    }
 
 }
