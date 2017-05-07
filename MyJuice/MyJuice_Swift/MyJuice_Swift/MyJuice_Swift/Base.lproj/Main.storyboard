@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6eF-Sg-6Ha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rEh-rj-vJY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <scene sceneID="gt1-Jl-8KK">
             <objects>
                 <navigationController id="6eF-Sg-6Ha" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qry-YD-old">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qry-YD-old">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -453,7 +453,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gjr-zw-9At" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rSa-qO-HSH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rSa-qO-HSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -466,10 +466,10 @@ which you can order</string>
             </objects>
             <point key="canvasLocation" x="-3687" y="2149"/>
         </scene>
-        <!--View Controller-->
+        <!--Cart-->
         <scene sceneID="vdB-bf-xZi">
             <objects>
-                <viewController id="i6f-hl-2K7" sceneMemberID="viewController">
+                <viewController id="i6f-hl-2K7" customClass="CartViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="akB-tc-aPy"/>
                         <viewControllerLayoutGuide type="bottom" id="JzX-Lo-ziH"/>
@@ -479,16 +479,16 @@ which you can order</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="IRD-Wh-Kgq"/>
+                    <tabBarItem key="tabBarItem" title="Cart" id="IRD-Wh-Kgq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edt-B4-aDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2705" y="1231"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu-->
         <scene sceneID="FQx-Uj-YEQ">
             <objects>
-                <viewController id="E68-o2-C04" sceneMemberID="viewController">
+                <viewController id="E68-o2-C04" customClass="MenuViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jbP-OH-3BS"/>
                         <viewControllerLayoutGuide type="bottom" id="egC-Jz-Uip"/>
@@ -498,13 +498,13 @@ which you can order</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="NGt-u3-G5K"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="NGt-u3-G5K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ar-6V-EOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1929" y="1231"/>
         </scene>
-        <!--Account View Controller-->
+        <!--Account-->
         <scene sceneID="15m-Dz-eo9">
             <objects>
                 <viewController id="0lv-TR-XiT" customClass="AccountViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -517,7 +517,7 @@ which you can order</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="4BA-Rt-Lc8"/>
+                    <tabBarItem key="tabBarItem" title="Account" id="4BA-Rt-Lc8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-vh-gvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -545,6 +545,7 @@ which you can order</string>
         <scene sceneID="ldr-GS-uHq">
             <objects>
                 <tabBarController id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6ku-HV-yuL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZX7-YO-sL4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -558,14 +559,30 @@ which you can order</string>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKG-YA-twi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2754" y="374"/>
+            <point key="canvasLocation" x="3049" y="350"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kbS-1o-rXo">
+            <objects>
+                <navigationController id="rEh-rj-vJY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UwC-mx-IZn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MOy-lZ-Twd" kind="relationship" relationship="rootViewController" id="25D-ia-qIV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xz8-rZ-7xx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2310" y="349"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ztq-Ih-jIh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ajD-fo-B6e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

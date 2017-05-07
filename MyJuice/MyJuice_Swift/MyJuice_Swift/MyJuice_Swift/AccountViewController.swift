@@ -17,10 +17,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Account"
         print("AccountViewController")
         let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
+        let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
         
-        tableView.frame         =   CGRect(x: 0, y: statusBarHeight, width: self.view.frame.width, height: 260)
+        tableView.frame         =   CGRect(x: 0, y: statusBarHeight+navigationBarHeight, width: self.view.frame.width, height: 260)
         tableView.delegate      =   self
         tableView.dataSource    =   self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -89,12 +91,37 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        //[no storyborad]
-        let nextVC: UIViewController = ProfileViewController()
+        print("😆")
+        print(indexPath.row)
         
-        let navi = UINavigationController(rootViewController: nextVC)
-        navi.modalTransitionStyle = .crossDissolve
-        present(navi, animated: true, completion: nil)
+        if(indexPath.row == 0){
+            let nextVC: UIViewController = ProfileViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if(indexPath.row == 1){
+            let nextVC: UIViewController = PaymentViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if(indexPath.row == 2){
+            let nextVC: UIViewController = AddressesViewController()
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
+        //[no storyborad]
+//        let nextVC: UIViewController = ProfileViewController()
+//        
+//        let navi = UINavigationController(rootViewController: nextVC)
+//        navi.modalTransitionStyle = .crossDissolve
+//        present(navi, animated: true, completion: nil)
+//
+        
+        
+        // Should I implement to call each Controller at each time?
+//        let className:String = navTitle[indexPath.row]+"ViewController"
+//        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String;
+//        let cls: AnyClass = NSClassFromString("\(namespace).\(className)")!;
+//        let myclass = cls as! UIViewController.Type
+//        let instance = myclass.init()
+//        self.navigationController?.pushViewController(instance, animated: true)
+//        
         
         
     }
