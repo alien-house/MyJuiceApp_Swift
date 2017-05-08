@@ -53,8 +53,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
             if((responseData.result.value) != nil) {
                 let swiftyJsonVar = JSON(responseData.result.value!)
                 
-                print("😩")
-//                print(swiftyJsonVar["result"])
                 if let resDataName = swiftyJsonVar["result"]["name"].string {
                     self.storeDataArray.append(resDataName)
                     print("☺️")
@@ -86,7 +84,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                 DispatchQueue(label: "com.myjuce.serial-queue").async {
                     
                     DispatchQueue.main.async {
-                        print("👶")
                         let loc = self.storeData
                         self.makeMap(latitude: loc["lat"]!, longitude: loc["lng"]!)
                         self.DetailTable.reloadData()
