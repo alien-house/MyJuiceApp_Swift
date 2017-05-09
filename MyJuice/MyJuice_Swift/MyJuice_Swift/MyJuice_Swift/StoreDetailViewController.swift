@@ -221,8 +221,6 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         
         if let cell:StoreDetailTableCell = tableView.dequeueReusableCell(withIdentifier: "StoreDetailTableCellID") as? StoreDetailTableCell {
             
-            print(indexPath.row)
-            print(self.storeDataArray)
             if(!self.storeDataArray.isEmpty){
                 if indexPath.row == 3{
                     print("😸")
