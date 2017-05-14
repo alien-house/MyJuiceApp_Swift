@@ -90,11 +90,11 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
             if let user = user {
                 // User is signed in. Show home screen
                 
-                let  arr: [String] = ["testestes","rrrrr"]
+//                let  arr: [String] = ["testestes","rrrrr"]
 //                self.ref.child("users").child(user.uid).updateChildValues(["address": arr])
-                self.ref.child("users").child(user.uid).child("address").updateChildValues(["3": "dere"])
+//                self.ref.child("users").child(user.uid).child("address").updateChildValues(["3": "dere"])
                 
-                //self.ref.child("users").child(user.uid).updateChildValues(["address": self.searchController?.searchBar.text!])
+                self.ref.child("users").child(user.uid).updateChildValues(["address": (self.searchController?.searchBar.text!)as! String])
 //                self.ref.childByAutoId().setValue(["address": self.searchController?.searchBar.text!])
 //                self.ref.childByAutoId().setValue(["food": "yerd"])
                 

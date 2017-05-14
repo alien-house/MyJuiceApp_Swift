@@ -8,12 +8,13 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let cellId = "cellId"
     var tableView: UITableView  =   UITableView()
-    let navTitle = ["Profile","Payment Cards","Addresses"]
+    let navTitle = ["Profile","Payment Cards","Addresses","Logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,28 +37,27 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            print ("Error signing out: %@", signOutError)
 //        }
   
-//        checkIfUserIsLoggedIn()
+        checkIfUserIsLoggedIn()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.tabBarController?.navigationItem.title = "Accout"
+    
+    }
     
     
     func checkIfUserIsLoggedIn(){
         
         if FIRAuth.auth()?.currentUser != nil {
             // if already login
-            
-            //[no storyborad]
-            //            let nextVC: UIViewController = AccountDetailViewController()
-            //            nextVC.modalTransitionStyle = UIModalTransitionStyle.partialCurl
-            //            self.present(nextVC, animated: true, completion: nil)
+            print("login!!!!!!💦")
                         
-            let AccountDetailViewController: AccountDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "AccountDetailView") as! AccountDetailViewController
-            
-            let navi = UINavigationController(rootViewController: AccountDetailViewController)
-            // setting animation
-            navi.modalTransitionStyle = .crossDissolve
-            present(navi, animated: true, completion: nil)
+//            let AccountDetailViewController: AccountDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "AccountDetailView") as! AccountDetailViewController
+//            let navi = UINavigationController(rootViewController: AccountDetailViewController)
+//            navi.modalTransitionStyle = .crossDissolve
+//            present(navi, animated: true, completion: nil)
             
             
         }else{
@@ -76,7 +76,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return navTitle.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,6 +103,25 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         }else if(indexPath.row == 2){
             let nextVC: UIViewController = AddressesViewController()
             self.navigationController?.pushViewController(nextVC, animated: true)
+        }else if(indexPath.row == 3){
+            let firebaseAuth = FIRAuth.auth()
+            do {
+                try
+                    firebaseAuth?.signOut()
+                print("logout")
+                if FIRAuth.auth()?.currentUser != nil {
+                    print("still there?")
+                }else{
+                    
+                    let SignInViewController: SignInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInView") as! SignInViewController
+                    let navi = UINavigationController(rootViewController: SignInViewController)
+                    navi.modalTransitionStyle = .crossDissolve
+                    present(navi, animated: true, completion: nil)
+                }
+                
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
         }
         
         //[no storyborad]

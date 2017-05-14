@@ -26,6 +26,12 @@ class MenuViewController: UIViewController {
         self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = "2"
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.tabBarController?.navigationItem.title = "Menu"
+        
+    }
+    
 
 }

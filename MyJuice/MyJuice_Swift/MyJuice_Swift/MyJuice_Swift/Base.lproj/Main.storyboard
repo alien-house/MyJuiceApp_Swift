@@ -152,7 +152,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="enc-1Z-Xp4" id="qPB-A3-90z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mza-e4-A1q">
@@ -222,7 +222,7 @@
         <!--Checkout-->
         <scene sceneID="g4n-hQ-0dm">
             <objects>
-                <viewController id="cF2-Kt-60v" customClass="CheckoutViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Checkout" id="cF2-Kt-60v" customClass="CheckoutViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qny-mH-p4X"/>
                         <viewControllerLayoutGuide type="bottom" id="HZV-du-w70"/>
@@ -240,7 +240,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y0j-qR-FxW" id="IKc-xF-xQ3">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V4-J5-sCg">
@@ -521,7 +521,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-vh-gvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3518" y="1232"/>
+            <point key="canvasLocation" x="3455" y="1230"/>
         </scene>
         <!--Account Detail View Controller-->
         <scene sceneID="uEX-pL-Rvi">
@@ -544,7 +544,7 @@ which you can order</string>
         <!--Tab Bar View Controller-->
         <scene sceneID="ldr-GS-uHq">
             <objects>
-                <tabBarController id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6ku-HV-yuL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZX7-YO-sL4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
