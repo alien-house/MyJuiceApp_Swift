@@ -14,14 +14,6 @@ import FacebookLogin
 import Firebase
 import FirebaseAuth
 
-struct LoginErrorCode {
-    static let INVALID_EMAIL = "Invalid email, please provide a real email address";
-    static let WRONG_PASSWORD = "Wrong Password, Please Try Again";
-    static let PROBLEM_CONNECTING = "Problem Connecting to Database. Please Try Later";
-    static let USER_NOT_FOUND = "User Not Found, Please Register";
-    static let EMAIL_ALREADY_IN_USE = "Email Already In Use, Please Use Different Email";
-    static let WEAK_PASSWORD = "Password Should Be At Least 6 Characters";
-}
 
 class RegisterViewController: UIViewController {
     
@@ -231,40 +223,6 @@ class RegisterViewController: UIViewController {
                 //
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 
-//                //Firebase login
-//                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-//                    if error != nil {
-//                        
-//                        
-//                    }else{
-//                        
-//                        if FIRAuth.auth()?.currentUser != nil {
-//                            print("current!!!!!!!")
-//                            
-//                            let user = FIRAuth.auth()?.currentUser
-//                            // The user's ID, unique to the Firebase project.
-//                            // Do NOT use this value to authenticate with your backend server,
-//                            // if you have one. Use getTokenWithCompletion:completion: instead.
-//                            let email = user?.email
-//                            let uid = user?.uid
-//                            let photoURL = user?.photoURL
-//
-//                            //after login, gonna go to map setting
-//                            let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
-//                            
-//                            let navi = UINavigationController(rootViewController: SelectAddressViewController)
-//                            // setting animation
-//                            navi.modalTransitionStyle = .crossDissolve
-//                            self.present(navi, animated: true, completion: nil)
-//                            
-//
-//                        }else{
-//                            print("no exist!")
-//                        }
-//                        
-//                    }
-//                }
-                
                 
                 
                 
@@ -304,44 +262,34 @@ class RegisterViewController: UIViewController {
         
         let email: String! = self.emailTextField.text
         let username: String! = self.firstnameTextField.text
+        let lastname: String! = self.lastnameTextField.text
         let password: String! = self.passwordTextField.text
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
                     print("🌟",(error?.localizedDescription)!)
-//                    switch errCode {
-//                    case .errorCodeWrongPassword:
-//                        self.alert_win(error:LoginErrorCode.WRONG_PASSWORD)
-//                        break;
-//                    case .errorCodeInvalidEmail:
-//                        self.alert_win(error:LoginErrorCode.INVALID_EMAIL)
-//                        break;
-//                    case .errorCodeUserNotFound:
-//                        self.alert_win(error:LoginErrorCode.USER_NOT_FOUND)
-//                        break;
-//                    case .errorCodeEmailAlreadyInUse:
-//                        self.alert_win(error:LoginErrorCode.EMAIL_ALREADY_IN_USE)
-//                        break;
-//                    case .errorCodeWeakPassword:
-//                        self.alert_win(error:LoginErrorCode.WEAK_PASSWORD)
-//                        break;
-//                    default:
-//                        self.alert_win(error:LoginErrorCode.PROBLEM_CONNECTING)
-//                        break;
-//                    }
                      self.alert_win(error:(error?.localizedDescription)!)
                     return
                     
                 }
             } else {
-                print("all good... continue")
+                print("all good... save user information!!!!!!!")
                 //If there is no error...
                 self.ref = FIRDatabase.database().reference()
-                self.ref.child("users").child(user!.uid).setValue(["email": email])
-                self.ref.child("users").child(user!.uid).setValue(["username": username])
-                self.ref.child("users").child(user!.uid).setValue(["password": password])
-                self.goNextPage()
+                self.ref.child("users").child(user!.uid).updateChildValues(["email": email])
+                self.ref.child("users").child(user!.uid).updateChildValues(["username": username])
+                self.ref.child("users").child(user!.uid).updateChildValues(["lastname": lastname])
+                self.ref.child("users").child(user!.uid).updateChildValues(["password": password])
+                
+                
+                let alert: UIAlertController = UIAlertController(title: "Created User", message: "Your account has been created successfully!!", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                    self.goNextPage()
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+                
             }
         }
     }
@@ -350,13 +298,15 @@ class RegisterViewController: UIViewController {
     
     func goNextPage(){
         
-        //after login, gonna go to map setting
-        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
+        self.dismiss(animated: true)
         
-        let navi = UINavigationController(rootViewController: SelectAddressViewController)
-        // setting animation
-        navi.modalTransitionStyle = .crossDissolve
-        self.present(navi, animated: true, completion: nil)
+        //after login, gonna go to map setting
+//        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
+//        
+//        let navi = UINavigationController(rootViewController: SelectAddressViewController)
+//        // setting animation
+//        navi.modalTransitionStyle = .crossDissolve
+//        self.present(navi, animated: true, completion: nil)
         
     }
     

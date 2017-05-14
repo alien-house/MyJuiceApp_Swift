@@ -53,6 +53,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             cartJsonVar = JSON(loadedCart!)
             self.tableView.reloadData()
             
+            totalPrice = 0.0
             for node in self.cartJsonVar {
                 totalPrice += node.1["price"][0].doubleValue;
             }

@@ -210,7 +210,6 @@ class SignInUserViewController: UIViewController {
                 FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                     if error != nil {
                         print("error!!!!!!!")
-                        print(error)
                         self.alert_win(error:(error?.localizedDescription)!)
                     }else{
                         
@@ -282,13 +281,14 @@ class SignInUserViewController: UIViewController {
     
     func goNextPage(){
         
+        self.dismiss(animated: true)
         //after login, gonna go to map setting
-        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
-        
-        let navi = UINavigationController(rootViewController: SelectAddressViewController)
-        // setting animation
-        navi.modalTransitionStyle = .crossDissolve
-        self.present(navi, animated: true, completion: nil)
+//        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
+//        
+//        let navi = UINavigationController(rootViewController: SelectAddressViewController)
+//        // setting animation
+//        navi.modalTransitionStyle = .crossDissolve
+//        self.present(navi, animated: true, completion: nil)
         
     }
     

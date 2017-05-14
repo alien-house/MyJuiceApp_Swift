@@ -57,7 +57,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="EqG-oE-SPr">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DkF-jO-6nH"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DkF-jO-6nH">
+                            <connections>
+                                <action selector="btnBack:" destination="1tE-aP-48f" id="u3m-oJ-iyp"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="kD1-Jk-4Sp">
                             <rect key="frame" x="112.5" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -544,7 +548,7 @@ which you can order</string>
         <!--Tab Bar View Controller-->
         <scene sceneID="ldr-GS-uHq">
             <objects>
-                <tabBarController storyboardIdentifier="tabBar" id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="TabBar" storyboardIdentifier="TabBar" id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6ku-HV-yuL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZX7-YO-sL4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -561,10 +565,10 @@ which you can order</string>
             </objects>
             <point key="canvasLocation" x="3049" y="350"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Tab Bar Navi View Controller-->
         <scene sceneID="kbS-1o-rXo">
             <objects>
-                <navigationController id="rEh-rj-vJY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabBarNaviView" id="rEh-rj-vJY" customClass="TabBarNaviViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UwC-mx-IZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -91,9 +91,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        print("😆")
-        print(indexPath.row)
-        
         if(indexPath.row == 0){
             let nextVC: UIViewController = ProfileViewController()
             self.navigationController?.pushViewController(nextVC, animated: true)

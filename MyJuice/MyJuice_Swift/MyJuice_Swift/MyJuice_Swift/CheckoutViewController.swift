@@ -24,6 +24,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         self.checkoutTable.delegate = self
         self.checkoutTable.dataSource = self
         
+        self.objects.add("Address")
         self.objects.add("Payment")
         self.objects.add("Credit Card")
         self.objects.add("ETA")
