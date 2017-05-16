@@ -112,8 +112,8 @@ class SignInUserViewController: UIViewController {
         
         
         userDefaults.register(defaults: ["DataStore": "default"])
-        saveData(str: "mushimushi")
-        print(readData())
+//        saveData(str: "mushimushi")
+//        print(readData())
     }
     
     

@@ -129,7 +129,7 @@ class RegisterViewController: UIViewController {
             print("Signed In")
         } else {
             // No user is signed in.
-            print("nottttttttttttt")
+//            print("nottttttttttttt")
         }
         
     }

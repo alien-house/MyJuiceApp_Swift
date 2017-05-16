@@ -34,6 +34,27 @@ class TabBarViewController: UIViewController {
     */
 
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let controller = self.presentingViewController as? SignInViewController{
+            print("😏2")
+            print(controller.item)
+        }
+        if let controller2 = self.presentingViewController as? SignInUserViewController{
+            print("😷2")
+            //            print(controller2.item)
+        }
+        if (self.presentingViewController as? RegisterViewController) != nil{
+            print("☎️2")
+            //            print(controller2.item)
+        }
+        
+        
+        
+        
+        
+    }
 
 
 }

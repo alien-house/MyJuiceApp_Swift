@@ -14,6 +14,7 @@ class SignInViewController: UIViewController  {
     @IBOutlet weak var leftView: UIView!
     @IBOutlet weak var rightView: UIView!
     
+    var item = "kikiki"
     var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
@@ -54,21 +55,26 @@ class SignInViewController: UIViewController  {
                 self.leftView.alpha = 0.0
                 self.rightView.alpha = 1.0
             })
-            
         }else{
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.leftView.alpha = 1.0
                 self.rightView.alpha = 0.0
             })
-            
         }
         
     }
     
     
     @IBAction func btnBack(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+//        nextViewController.foo = bar
+        print("☀️")
+        let controller = self.presentingViewController as? SignInViewController
+        self.dismiss(animated: true, completion: {
+            controller?.item = "kokoko"
+            print(self.parent?.childViewControllers)
+//            self.parent.yourVariable = 0
+        })
     }
     
     

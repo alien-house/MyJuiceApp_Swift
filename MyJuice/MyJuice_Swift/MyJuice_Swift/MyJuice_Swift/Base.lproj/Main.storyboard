@@ -14,7 +14,7 @@
         <scene sceneID="gt1-Jl-8KK">
             <objects>
                 <navigationController id="6eF-Sg-6Ha" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qry-YD-old">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qry-YD-old">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -457,7 +457,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gjr-zw-9At" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rSa-qO-HSH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rSa-qO-HSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -569,7 +569,7 @@ which you can order</string>
         <scene sceneID="kbS-1o-rXo">
             <objects>
                 <navigationController storyboardIdentifier="TabBarNaviView" id="rEh-rj-vJY" customClass="TabBarNaviViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UwC-mx-IZn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UwC-mx-IZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -586,7 +586,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ajD-fo-B6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

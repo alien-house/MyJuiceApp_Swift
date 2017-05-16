@@ -28,7 +28,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource    =   self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
-        
+        print("🎧")
         //signout
 //        let firebaseAuth = FIRAuth.auth()
 //        do {
@@ -36,14 +36,18 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        } catch let signOutError as NSError {
 //            print ("Error signing out: %@", signOutError)
 //        }
-  
-        checkIfUserIsLoggedIn()
+        
+        
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.navigationItem.title = "Accout"
+        
+        checkIfUserIsLoggedIn()
+        
     
     }
     
@@ -63,12 +67,31 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         }else{
             // without login
             
-            let SignInViewController: SignInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInView") as! SignInViewController
             
-            let navi = UINavigationController(rootViewController: SignInViewController)
-            // setting animation
-            navi.modalTransitionStyle = .crossDissolve
-            present(navi, animated: true, completion: nil)
+            let alert: UIAlertController = UIAlertController(title: "Register/Sign In", message: "Please register your account or sign in", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                
+                let SignInViewController: SignInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInView") as! SignInViewController
+                
+                let navi = UINavigationController(rootViewController: SignInViewController)
+                // setting animation
+                navi.modalTransitionStyle = .crossDissolve
+                self.present(navi, animated: true, completion: nil)
+                
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { action in
+                print("Cancel")
+                self.tabBarController!.selectedIndex = 0
+            }
+            
+            
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true, completion: nil)
+            
+            
             
         }
         

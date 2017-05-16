@@ -11,7 +11,7 @@ import Firebase
 
 //@objc(ProfileViewController)
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     let cellId = "cellId"
     var tableView: UITableView  =   UITableView()
@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.frame         =   CGRect(x: 0, y: 0, width: self.view.frame.width, height: 260)
         tableView.delegate      =   self
         tableView.dataSource    =   self
+        tableView.allowsSelection = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
         
@@ -36,25 +37,31 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         
         ///============
-        ref = FIRDatabase.database().reference()
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            let lastname = value?["lastname"] as? String ?? ""
-            let email = value?["email"] as? String ?? ""
-            self.navTitleArray.add(username)
-            self.navTitleArray.add(lastname)
-            self.navTitleArray.add(email)
-            self.tableView.reloadData()
+        if FIRAuth.auth()?.currentUser != nil {
             
-        }) { (error) in
-            print(error.localizedDescription)
+            ref = FIRDatabase.database().reference()
+            
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let username = value?["username"] as? String ?? ""
+                let lastname = value?["lastname"] as? String ?? ""
+                let email = value?["email"] as? String ?? ""
+                self.navTitleArray.add(username)
+                self.navTitleArray.add(lastname)
+                self.navTitleArray.add(email)
+                self.tableView.reloadData()
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+
+        }else{
+            print("Need login")
         }
-        
-        ///============
+                ///============
         
         
     }
@@ -91,7 +98,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style:.subtitle, reuseIdentifier:cellId)
-        cell.textLabel?.text = self.navTitleArray[indexPath.row] as? String
+        let txtfield = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        txtfield.delegate = self
+        txtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingDidEndOnExit)
+        txtfield.text = self.navTitleArray[indexPath.row] as? String
+        cell.addSubview(txtfield)
         return cell
         
     }
@@ -99,5 +110,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
+    }
+    func textFieldDidChange(_ textField: UITextField) {
+        print("changeddd"+"👽")
+        print(textField)
     }
 }

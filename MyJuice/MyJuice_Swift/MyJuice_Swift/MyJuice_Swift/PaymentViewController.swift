@@ -14,22 +14,14 @@ class PaymentViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Edit Payment"
         view.backgroundColor = UIColor(r:255,g:255,b:255)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.barButtonItemClicked)), animated: true)
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func barButtonItemClicked(){
+        print("😏")
     }
-    */
+
 
 }
