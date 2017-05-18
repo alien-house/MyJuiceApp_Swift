@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     let cellId = "cellId"
     var tableView: UITableView  =   UITableView()
     let navTitleArray:NSMutableArray = []
-    
     var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
@@ -109,9 +108,29 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+    
     }
+    
     func textFieldDidChange(_ textField: UITextField) {
+        
+        //🌾ここでどのテキストフィールドがを判定する
+        
+        
+//        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+//            if let user = user {
+//                
+//                self.ref.child("users").child(user.uid).updateChildValues(["address": textField])
+//                //                self.ref.childByAutoId().setValue(["food": "yerd"])
+//                
+//                
+//                
+//            } else {
+//                print("😄","nothing")
+//            }
+//        }
+//        
+
+        
         print("changeddd"+"👽")
         print(textField)
     }
