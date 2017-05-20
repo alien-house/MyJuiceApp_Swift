@@ -124,7 +124,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let navi = UINavigationController(rootViewController: CheckoutViewController)
-        navi.modalTransitionStyle = .crossDissolve
+//        navi.modalTransitionStyle = .crossDissolve
         present(navi, animated: true, completion: nil)
         
         

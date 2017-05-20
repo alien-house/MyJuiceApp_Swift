@@ -20,10 +20,22 @@ class SelectAddressViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let str: String = userDefaults.object(forKey: user.name) as! String
-        print("🤧")
-        print(str)
-    }
+        view.backgroundColor = UIColor(r:255,g:255,b:255)
+//        
+//        let cancelButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: "clickButton")
+//        
+//        self.navigationItem.setLeftBarButtonItems([cancelButton], animated: true)
 
+//        let str: String = userDefaults.object(forKey: user.name) as! String
+//        print("🤧")
+//        print(str)
+    }
+    
+    func clickButton(){
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        
+        
+    }
 }

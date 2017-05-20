@@ -97,7 +97,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style:.subtitle, reuseIdentifier:cellId)
-        let txtfield = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+        let txtfield = UITextField(frame: CGRect(x: 10, y: 10, width: 200, height: 30))
+        txtfield.tag = indexPath.row
         txtfield.delegate = self
         txtfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingDidEndOnExit)
         txtfield.text = self.navTitleArray[indexPath.row] as? String
@@ -113,25 +114,56 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func textFieldDidChange(_ textField: UITextField) {
         
-        //🌾ここでどのテキストフィールドがを判定する
-        
-        
-//        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
-//            if let user = user {
-//                
-//                self.ref.child("users").child(user.uid).updateChildValues(["address": textField])
-//                //                self.ref.childByAutoId().setValue(["food": "yerd"])
-//                
-//                
-//                
-//            } else {
-//                print("😄","nothing")
-//            }
-//        }
-//        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                switch(textField.tag){
+                case 0:
+                    self.ref.child("users").child(user.uid).updateChildValues(["username": textField.text!])
+                    break
+                case 1:
+                    self.ref.child("users").child(user.uid).updateChildValues(["lastname": textField.text!])
+                    break
+                case 2:
+                    let cuser = FIRAuth.auth()?.currentUser
+                    // needed re auth
+//                    var credential: FIRAuthCredential
+//                    let credential = FIREmailPasswordAuthProvider.credentialWithEmail(email, password: password)
 
-        
+                    // Prompt the user to re-provide their sign-in credentials
+//                    
+//                    cuser?.reauthenticate(with: credential) { error in
+//                        if let error = error {
+//                            
+////                            if let cuser = FIRAuth.auth()?.currentUser{
+////                                cuser.updateEmail(textField.text!, completion: { error in
+////                                    if let error = error {
+////                                        print(error.localizedDescription)
+////                                        
+////                                    } else {
+////                                        self.ref.child("users").child(user.uid).updateChildValues(["email": textField.text!])
+////                                    }
+////                                })
+////                            }
+//                            
+//                            
+//                        } else {
+//                            // User re-authenticated.
+//                        }
+//                    }
+                    
+                    
+                    
+                    break
+                    
+                default:
+                    
+                    break
+                }
+                
+            } else {
+                print("😄","nothing")
+            }
+        }
         print("changeddd"+"👽")
-        print(textField)
     }
 }

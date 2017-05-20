@@ -37,18 +37,14 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            print ("Error signing out: %@", signOutError)
 //        }
         
-        
-        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.navigationItem.title = "Accout"
-        
         checkIfUserIsLoggedIn()
         
-    
     }
     
     
@@ -85,8 +81,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 self.tabBarController!.selectedIndex = 0
             }
             
-            
-            
             alert.addAction(okAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
@@ -113,7 +107,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         if(indexPath.row == 0){
             let nextVC: UIViewController = ProfileViewController()
             self.navigationController?.pushViewController(nextVC, animated: true)
@@ -124,24 +117,45 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             let nextVC: UIViewController = AddressesViewController()
             self.navigationController?.pushViewController(nextVC, animated: true)
         }else if(indexPath.row == 3){
-            let firebaseAuth = FIRAuth.auth()
-            do {
-                try
-                    firebaseAuth?.signOut()
-                print("logout")
-                if FIRAuth.auth()?.currentUser != nil {
-                    print("still there?")
-                }else{
+            
+            
+            
+            let alert: UIAlertController = UIAlertController(title: "Logout", message: "Do you really want to logout?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Yes", style: .default) { action in
+                
+                
+                let firebaseAuth = FIRAuth.auth()
+                do {
+                    try
+                        firebaseAuth?.signOut()
+                    print("logout")
+                    if FIRAuth.auth()?.currentUser != nil {
+                        print("still there?")
+                    }else{
+                        
+                        let SignInViewController: SignInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInView") as! SignInViewController
+                        let navi = UINavigationController(rootViewController: SignInViewController)
+                        navi.modalTransitionStyle = .crossDissolve
+                        self.present(navi, animated: true, completion: nil)
+                    }
                     
-                    let SignInViewController: SignInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInView") as! SignInViewController
-                    let navi = UINavigationController(rootViewController: SignInViewController)
-                    navi.modalTransitionStyle = .crossDissolve
-                    present(navi, animated: true, completion: nil)
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
                 }
                 
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
+                
             }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { action in
+                print("Cancel")
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            
+            
+            
         }
         
         //[no storyborad]

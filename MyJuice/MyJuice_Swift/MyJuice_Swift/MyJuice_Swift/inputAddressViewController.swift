@@ -90,12 +90,8 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
             if let user = user {
                 // User is signed in. Show home screen
                 
-                self.ref.child("users").child(user.uid).updateChildValues(["address": (self.searchController?.searchBar.text!)as! String])
+                self.ref.child("users").child(user.uid).updateChildValues(["address": (self.searchController?.searchBar.text!)!])
 //                self.ref.childByAutoId().setValue(["food": "yerd"])
-                
-                
-                
-                
                 
             } else {
                 // No User is signed in. Show user the login screen

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 //http://stackoverflow.com/questions/26158768/how-to-get-textlabel-of-selected-row-in-swift
 
@@ -17,6 +17,8 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var checkoutTable: UITableView!
     
     var objects:NSMutableArray! = NSMutableArray()
+    var objectsUserSelected:[String:String] = [:]
+    var ref: FIRDatabaseReference!
     
     override func viewDidLoad() {
         
@@ -45,10 +47,32 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         self.view.addSubview(collectionView)
         
         
+        //getting information
+        if FIRAuth.auth()?.currentUser != nil {
+            
+            ref = FIRDatabase.database().reference()
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let address = value?["address"] as? String ?? ""
+                self.objectsUserSelected["address"] = address
+                self.checkoutTable.reloadData()
+                
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+        }else{
+            print("Need login")
+        }
+        
+        
+        
     }
     
     
-    // Collection View
+    // Collection View ===============================================
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
 //        if(!self.cartJsonVar.isEmpty){
@@ -83,25 +107,39 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        let cvc = CompleteViewController()
-        cvc.modalTransitionStyle = .crossDissolve
-        present(cvc, animated: true, completion: nil)
-        
-        userDefaults.removeObject(forKey: "myCart")
-        
-        
-//        self.dismiss(animated: true, completion: nil)
-        
-//        let TabBarViewController: TabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBar") as! TabBarViewController
-//        
-//        let navi = UINavigationController(rootViewController: TabBarViewController)
-//        navi.modalTransitionStyle = .crossDissolve
-//        present(navi, animated: true, completion: nil)
-        
+        if(self.objectsUserSelected.count == 4){
+            
+            let cvc = CompleteViewController()
+            cvc.modalTransitionStyle = .crossDissolve
+            present(cvc, animated: true, completion: nil)
+            
+            
+            // if complete, cart is gonna deleted
+            userDefaults.removeObject(forKey: "myCart")
+            
+            
+            //        self.dismiss(animated: true, completion: nil)
+            
+            //        let TabBarViewController: TabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBar") as! TabBarViewController
+            //
+            //        let navi = UINavigationController(rootViewController: TabBarViewController)
+            //        navi.modalTransitionStyle = .crossDissolve
+            //        present(navi, animated: true, completion: nil)
+            
+        }else{
+            
+            let alert: UIAlertController = UIAlertController(title: "", message: "Please input these or chooose", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                print("Action OK!!")
+                
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
-    //Table View
+    // Table View ===============================================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return self.objects.count
     }
@@ -109,19 +147,62 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         if let cell:CheckoutTableCell = self.checkoutTable.dequeueReusableCell(withIdentifier: "checkoutTableCell") as? CheckoutTableCell{
-        
+            
             cell.checoutLabel.text = self.objects.object(at: indexPath.row) as? String
-            cell.checoutStateLabel.text = "sssss"
+            
+            if(indexPath.row == 0){
+                //Address
+                cell.checoutStateLabel.text = self.objectsUserSelected["address"]
+            }else if(indexPath.row == 1){
+                //Payment [directly or delivered]
+                cell.checoutStateLabel.text = ""
+                
+            }else if(indexPath.row == 2){
+                //cradit card [input number or directly]
+                cell.checoutStateLabel.text = ""
+                
+            }else if(indexPath.row == 3){
+                //ETA [can choose time ]
+                cell.checoutStateLabel.text = ""
+                
+            }else{
+            }
+            
             
             return cell
             
         }
         return UITableViewCell()
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("🐶")
+        if(indexPath.row == 0){
+            
+//            let storyboard: UIStoryboard = self.storyboard!
+//            let nextView = storyboard.instantiateViewController(withIdentifier: "SelectAddressNaviView")
+//            present(nextView, animated: true, completion: nil)
+            
+            let nextView = storyboard?.instantiateViewController(withIdentifier: "SelectAddressView")
+            self.navigationController?.pushViewController(nextView!, animated: true)
+            
+        }else if(indexPath.row == 1){
+            let nextView = CheckoutPaymentViewController()
+            self.navigationController?.pushViewController(nextView, animated: true)
+            
+        }else if(indexPath.row == 2){
+            let nextView = CheckoutCreditcardViewController()
+            self.navigationController?.pushViewController(nextView, animated: true)
+            
+        }else if(indexPath.row == 3){
+            let nextView = CheckoutETAViewController()
+            self.navigationController?.pushViewController(nextView, animated: true)
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int{
         return 1
     }
+    
     
     
     @IBAction func btnBack(_ sender: UIBarButtonItem) {
