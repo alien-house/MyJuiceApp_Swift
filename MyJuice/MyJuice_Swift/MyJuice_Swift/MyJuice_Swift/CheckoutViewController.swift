@@ -11,7 +11,7 @@ import Firebase
 
 //http://stackoverflow.com/questions/26158768/how-to-get-textlabel-of-selected-row-in-swift
 
-class CheckoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class CheckoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate,AudioPlayerDelegate {
     
     let userDefaults = UserDefaults.standard
     @IBOutlet weak var checkoutTable: UITableView!
@@ -19,6 +19,11 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     var objects:NSMutableArray! = NSMutableArray()
     var objectsUserSelected:[String:String] = [:]
     var ref: FIRDatabaseReference!
+    
+    func playPauseDidTap() {
+        print("play/pause tapped!!")
+    }
+
     
     override func viewDidLoad() {
         
@@ -195,6 +200,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
             
         }else if(indexPath.row == 3){
             let nextView = CheckoutETAViewController()
+            nextView.delegate = self
             self.navigationController?.pushViewController(nextView, animated: true)
         }
     }
