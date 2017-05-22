@@ -11,7 +11,7 @@ import Firebase
 
 //http://stackoverflow.com/questions/26158768/how-to-get-textlabel-of-selected-row-in-swift
 
-class CheckoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate,AudioPlayerDelegate {
+class CheckoutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate,CheckoutETADelegate,CheckoutPayDelegate,CheckoutCCDelegate {
     
     let userDefaults = UserDefaults.standard
     @IBOutlet weak var checkoutTable: UITableView!
@@ -20,10 +20,18 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     var objectsUserSelected:[String:String] = [:]
     var ref: FIRDatabaseReference!
     
-    func playPauseDidTap() {
-        print("play/pause tapped!!")
+    func payValueSet(dateString:String) {
+        self.objectsUserSelected["payment"] = dateString
+        self.checkoutTable.reloadData()
     }
-
+    func ccValueSet(dateString:String) {
+        self.objectsUserSelected["craditcard"] = dateString
+        self.checkoutTable.reloadData()
+    }
+    func etaValueSet(dateString:String) {
+        self.objectsUserSelected["eta"] = dateString
+        self.checkoutTable.reloadData()
+    }
     
     override func viewDidLoad() {
         
@@ -160,15 +168,15 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.checoutStateLabel.text = self.objectsUserSelected["address"]
             }else if(indexPath.row == 1){
                 //Payment [directly or delivered]
-                cell.checoutStateLabel.text = ""
+                cell.checoutStateLabel.text = self.objectsUserSelected["payment"]
                 
             }else if(indexPath.row == 2){
                 //cradit card [input number or directly]
-                cell.checoutStateLabel.text = ""
+                cell.checoutStateLabel.text = self.objectsUserSelected["craditcard"]
                 
             }else if(indexPath.row == 3){
                 //ETA [can choose time ]
-                cell.checoutStateLabel.text = ""
+                cell.checoutStateLabel.text = self.objectsUserSelected["eta"]
                 
             }else{
             }
@@ -192,10 +200,12 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
             
         }else if(indexPath.row == 1){
             let nextView = CheckoutPaymentViewController()
+            nextView.delegate = self
             self.navigationController?.pushViewController(nextView, animated: true)
             
         }else if(indexPath.row == 2){
             let nextView = CheckoutCreditcardViewController()
+            nextView.delegate = self
             self.navigationController?.pushViewController(nextView, animated: true)
             
         }else if(indexPath.row == 3){
