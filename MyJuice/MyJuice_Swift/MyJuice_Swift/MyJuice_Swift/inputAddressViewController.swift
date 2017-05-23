@@ -82,9 +82,6 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
     
     func onClick(_ sender: AnyObject){
         let button = sender as! UIButton
-        print("sender.tag:\(button.tag)")
-        print("😄d")
-//        print(searchController?.searchBar.text!)
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
@@ -135,15 +132,6 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    
-
-    
-    
-    
-    
-    
-    
-    
     
     
 }

@@ -122,13 +122,27 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         
         if(self.objectsUserSelected.count == 4){
             
-            let cvc = CompleteViewController()
-            cvc.modalTransitionStyle = .crossDissolve
-            present(cvc, animated: true, completion: nil)
+            
+            let alert: UIAlertController = UIAlertController(title: "", message: "Are you really gonna buy?", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Buy", style: .default) { action in
+                
+                let cvc = CompleteViewController()
+                cvc.modalTransitionStyle = .crossDissolve
+                self.present(cvc, animated: true, completion: nil)
+                self.userDefaults.removeObject(forKey: "myCart")
+                
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { action in
+                print("Cancel")
+            }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            
             
             
             // if complete, cart is gonna deleted
-            userDefaults.removeObject(forKey: "myCart")
             
             
             //        self.dismiss(animated: true, completion: nil)
