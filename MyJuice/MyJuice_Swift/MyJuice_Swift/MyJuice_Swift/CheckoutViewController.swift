@@ -120,7 +120,8 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        if(self.objectsUserSelected.count == 4){
+//        if(self.objectsUserSelected.count == 4){
+          if(self.objectsUserSelected.count == 1){
             
             
             let alert: UIAlertController = UIAlertController(title: "", message: "Are you really gonna buy?", preferredStyle: .alert)
@@ -128,8 +129,9 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 let cvc = CompleteViewController()
                 cvc.modalTransitionStyle = .crossDissolve
-                self.present(cvc, animated: true, completion: nil)
+                // delete
                 self.userDefaults.removeObject(forKey: "myCart")
+                self.present(cvc, animated: true, completion: nil)
                 
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .default) { action in

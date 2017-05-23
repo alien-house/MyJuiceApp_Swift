@@ -15,6 +15,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let cellId = "cellId"
     var tableView: UITableView  =   UITableView()
+    var collectionView:UICollectionView!
     let userDefaults = UserDefaults.standard
     var cartJsonVar:JSON = ""
     var totalPrice:Double = 0.0
@@ -23,16 +24,50 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let productID: NSInteger
 //        let email: String = "email"
 //    }
+    
+    //for test
+    let testButton:UIButton = {
+        let btn = UIButton(type:.custom)
+        let fbcolor:UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        btn.backgroundColor = fbcolor
+        btn.layer.cornerRadius = 4.0
+        btn.tag = 0
+        btn.setTitle("adddd", for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        btn.frame = CGRect(x:20, y:560, width:300, height:50)
+        btn.addTarget(self, action: #selector(testButtonClicked), for: .touchUpInside)
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //for test =======================
+        self.view.addSubview(self.testButton)
+        //=======================
+        UserDefaults.standard.addObserver(self,forKeyPath: "myCart", options: NSKeyValueObservingOptions.new, context: nil)
         userDefaults.register(defaults: ["DataStore": "default"])
+        
+    }
+    
+    //for test =======================
+    func testButtonClicked(){
+        print("㊗️")
+        var cart: [[String: Any]] = []
+        cart.append(["ingr": ["Apple","Pineapple"], "bottle": ["skull family"], "price": [12.05], "qty": [1]])
+        cart.append(["ingr": ["Banana","Mango","Strawberry"], "bottle": ["don't forget it!"], "price": [16], "qty": [5]])
+        userDefaults.set(cart, forKey: "myCart")
+    
+    }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("きた？")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.navigationItem.title = "My Cart"
+        print("🎿My Cart")
         // Table View
         let statusBarHeight: CGFloat     = UIApplication.shared.statusBarFrame.height
         let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
@@ -42,10 +77,20 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
         
+        
         // Collection View
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: view.frame.width, height: 60)
+        let tabHeight = self.tabBarController?.tabBar.frame.size.height
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: self.view.frame.height - (60+tabHeight!), width: self.view.frame.width, height: 60), collectionViewLayout: layout)
+        collectionView.collectionViewLayout = layout
+        collectionView.dataSource                   = self
+        collectionView.delegate                     = self
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellcol")
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor              = UIColor.clear
+        
         
         if (userDefaults.object(forKey: "myCart") != nil) {
             
@@ -54,19 +99,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
             
             totalPrice = 0.0
-            for node in self.cartJsonVar {
-                totalPrice += node.1["price"][0].doubleValue;
+            if((loadedCart?.count)! > 0 ){
+                for node in self.cartJsonVar {
+                    totalPrice += node.1["price"][0].doubleValue;
+                }
             }
             
             if(!self.cartJsonVar.isEmpty){
-                let tabHeight = self.tabBarController?.tabBar.frame.size.height
-                let collectionView                          = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-                collectionView.frame                        = CGRect(x: 0, y: self.view.frame.height - (60+tabHeight!), width: self.view.frame.width, height: 60)
-                collectionView.dataSource                   = self
-                collectionView.delegate                     = self
-                collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellcol")
-                collectionView.showsVerticalScrollIndicator = false
-                collectionView.backgroundColor              = UIColor.clear
                 self.view.addSubview(collectionView)
             }
         }else{
@@ -75,8 +114,9 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(self.cartJsonVar)
             self.cartJsonVar = ""
             self.totalPrice = 0.0
+            print(!self.cartJsonVar.isEmpty)
             self.tableView.reloadData()
-//            self.tableView.reloadData()
+            self.collectionView.reloadData()
         }
         
     }
@@ -86,6 +126,7 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if(!self.cartJsonVar.isEmpty){
             return 1
         }else{
+            print("☁️")
             return 0
         }
     }
