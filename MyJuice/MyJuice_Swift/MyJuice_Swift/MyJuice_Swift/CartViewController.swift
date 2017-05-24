@@ -9,8 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-
-
 class CartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     let cellId = "cellId"
@@ -60,8 +58,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("きた？")
         
+        if let cart2 = self.userDefaults.array(forKey: "myCart"){
+            if(cart2.count > 0){
+                self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = String(cart2.count)
+                checkCart()
+                self.tableView.reloadData()
+                self.collectionView.reloadData()
+            }
+        }
+        print("きた？")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +97,12 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor              = UIColor.clear
         
+        checkCart()
         
+        
+    }
+    
+    func checkCart(){
         if (userDefaults.object(forKey: "myCart") != nil) {
             
             let loadedCart = UserDefaults.standard.array(forKey: "myCart") as? [[String: Any]]
@@ -118,8 +129,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
             self.collectionView.reloadData()
         }
-        
     }
+    
     
     // Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

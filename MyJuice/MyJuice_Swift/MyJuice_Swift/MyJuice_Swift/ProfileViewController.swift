@@ -109,7 +109,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    
     }
     
     func textFieldDidChange(_ textField: UITextField) {
