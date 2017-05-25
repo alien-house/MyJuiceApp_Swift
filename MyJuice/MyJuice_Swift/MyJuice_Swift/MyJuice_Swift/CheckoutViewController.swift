@@ -146,7 +146,6 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
             
             // if complete, cart is gonna deleted
             
-            
             //        self.dismiss(animated: true, completion: nil)
             
             //        let TabBarViewController: TabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBar") as! TabBarViewController
@@ -212,6 +211,9 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
 //            present(nextView, animated: true, completion: nil)
             
             let nextView = storyboard?.instantiateViewController(withIdentifier: "SelectAddressView")
+            
+            print("😄","nextView")
+            print(nextView)
             self.navigationController?.pushViewController(nextView!, animated: true)
             
         }else if(indexPath.row == 1){

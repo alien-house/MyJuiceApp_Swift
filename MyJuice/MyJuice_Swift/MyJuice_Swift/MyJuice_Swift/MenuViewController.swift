@@ -31,17 +31,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         var cart: [[String: Any]] = []
-        self.arrayOfCellDatas = [cellData(cell: 1, text: "Apple", image: #imageLiteral(resourceName: "AppleImage")),
-                                 cellData(cell: 2, text: "Banana", image: #imageLiteral(resourceName: "banana")),
-                                 cellData(cell: 3, text: "Pineapple", image: #imageLiteral(resourceName: "Pineapple")),
-                                 cellData(cell: 4, text: "Watermelon", image: #imageLiteral(resourceName: "watermelon")),
-                                 cellData(cell: 5, text: "Orange", image: #imageLiteral(resourceName: "orange")),
-                                 cellData(cell: 6, text: "Strawberry", image: #imageLiteral(resourceName: "strawberry")),
-                                 cellData(cell: 7, text: "Celery", image: #imageLiteral(resourceName: "celery")),
-                                 cellData(cell: 8, text: "Tomato", image: #imageLiteral(resourceName: "tomato")),
-                                 cellData(cell: 9, text: "Grapes", image: #imageLiteral(resourceName: "grapes")),
-                                 cellData(cell: 10, text: "Avocado", image: #imageLiteral(resourceName: "avocado")),
-                                 cellData(cell: 11, text: "Carrot", image: #imageLiteral(resourceName: "carrot"))]
+        
+        self.arrayOfCellDatas = [cellData(cell: 1, text: "Apple(2.50)", image: #imageLiteral(resourceName: "AppleImage")),
+                                 cellData(cell: 2, text: "Banana(2.50)", image: #imageLiteral(resourceName: "banana")),
+                                 cellData(cell: 3, text: "Pineapple(3.00)", image: #imageLiteral(resourceName: "Pineapple")),
+                                 cellData(cell: 4, text: "Watermelon(3.00)", image: #imageLiteral(resourceName: "watermelon")),
+                                 cellData(cell: 5, text: "Orange(3.00)", image: #imageLiteral(resourceName: "orange")),
+                                 cellData(cell: 6, text: "Strawberry(3.10)", image: #imageLiteral(resourceName: "strawberry")),
+                                 cellData(cell: 7, text: "Celery(3.10)", image: #imageLiteral(resourceName: "celery")),
+                                 cellData(cell: 8, text: "Tomato(2.75)", image: #imageLiteral(resourceName: "tomato")),
+                                 cellData(cell: 9, text: "Grapes(2.75)", image: #imageLiteral(resourceName: "grapes")),
+                                 cellData(cell: 10, text: "Avocado(2.50)", image: #imageLiteral(resourceName: "avocado")),
+                                 cellData(cell: 11, text: "Carrot(2.00)", image: #imageLiteral(resourceName: "carrot"))]
+
         
         self.menuTableView.delegate = self
         self.menuTableView.dataSource = self
@@ -257,23 +259,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let navi = UINavigationController(rootViewController: IngredientDetailViewController)
         // setting animation
-        navi.modalTransitionStyle = .crossDissolve
-        present(navi, animated: true, completion: nil)
+//        navi.modalTransitionStyle = .crossDissolve
+//        present(navi, animated: true, completion: nil)
+        self.navigationController?.pushViewController(navi, animated: true)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         let target = segue.destination as? IngredientDetailViewController
-        
         target?.selectedItems = selectedItems
-        
-        //        target?.ingredient1.image = self.arrayOfCellDatas[selectedItems[0]].image
-        //        target?.ingredient2.image = self.arrayOfCellDatas[selectedItems[1]].image
-        //        target?.ingredient3.image = self.arrayOfCellDatas[selectedItems[2]].image
-        
         print("prepare done")
     }
     
