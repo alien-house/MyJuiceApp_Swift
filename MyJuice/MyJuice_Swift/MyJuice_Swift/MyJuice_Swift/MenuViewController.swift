@@ -76,24 +76,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        print("🎁")
         
         let cell = Bundle.main.loadNibNamed("TableViewCell_Ingredient1", owner: self, options: nil)?.first as! TableViewCell_Ingredient1
         cell.Ingredient1.image = arrayOfCellDatas[indexPath.row].image
         cell.Ingredient_label1.text = arrayOfCellDatas[indexPath.row].text
         
         return cell
-//        if arrayOfCellDatas[indexPath.row].cell == 1{
-//            
-//            let cell = Bundle.main.loadNibNamed("TableViewCell_Ingredient1", owner: self, options: nil)?.first as! TableViewCell_Ingredient1
-//            cell.Ingredient1.image = arrayOfCellDatas[indexPath.row].image
-//            cell.Ingredient_label1.text = arrayOfCellDatas[indexPath.row].text
-//            
-//            return cell
-//        }
-//        else{
-//            
-//        }
         
     }
     
@@ -131,26 +119,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    //    {
-    //        myIndex = indexPath.row
-    //        performSegue(withIdentifier: "showIngredientSegue", sender: self)
-    //    }
-    //
-    //    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        print("Row \(indexPath.row)selected")
-    //        selectedImage = arrayOfCellDatas[indexPath.row].image
-    //        performSegue(withIdentifier: "IngredientDetail", sender: self)
-    //    }
-    //
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        if(segue.identifier == "IngredientDetail") {
-    //            _ = segue.destination as! IngredientDetailViewController
-    //        }
-    //    }
-    //
-    
-    
     /* Will Select Row */
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         
@@ -171,22 +139,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ UItableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //            if let cell = tableView.cellForRow(at: indexPath) {
-        //                cell.accessoryType = .checkmark
-        //            }
-        //            if let cell = tableView.cellForRow(at: indexPath) {
-        //                cell.accessoryType = .none
-        //            }
-        //        else {
-        //            if let cell = tableView.cellForRow(at: indexPath) {
-        //                cell.accessoryType = .checkmark
-        //            }
-        //        }
-        //    }
-        
-        
-        print(selectedItems.count)
-        print("Up to 3 Items!")
         
         if menuTableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark
         {
@@ -257,11 +209,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         IngredientDetailViewController.selectedItems = selectedItems
 //        IngredientDetailViewController.image = self.arrayOfCellDatas[indexPath.row].image
         
-        let navi = UINavigationController(rootViewController: IngredientDetailViewController)
+//        let navi = UINavigationController(rootViewController: IngredientDetailViewController)
         // setting animation
 //        navi.modalTransitionStyle = .crossDissolve
 //        present(navi, animated: true, completion: nil)
-        self.navigationController?.pushViewController(navi, animated: true)
+        self.navigationController?.pushViewController(IngredientDetailViewController, animated: true)
         
     }
     

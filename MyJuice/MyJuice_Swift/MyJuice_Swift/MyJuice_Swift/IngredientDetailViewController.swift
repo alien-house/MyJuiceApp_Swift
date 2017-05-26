@@ -42,12 +42,11 @@ class IngredientDetailViewController: UIViewController {
     
     func addItemPrice(index: Int) {
         self.price = self.price! + self.prices[index]
-        
         self.label.text = "$ \(self.price!)"
-        
     }
     
     @IBAction func btnBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
