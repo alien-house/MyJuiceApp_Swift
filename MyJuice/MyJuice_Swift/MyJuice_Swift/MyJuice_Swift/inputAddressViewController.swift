@@ -41,10 +41,7 @@ class inputAddressViewController: UIViewController, CLLocationManagerDelegate, G
         
     }
     
-    
-    
 }
-
 
 
 // Handle the user's selection.
@@ -54,12 +51,7 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
         searchController?.isActive = false
         // Do something with the selected place.
         searchController?.searchBar.text = place.formattedAddress
-        print("Place name: \(place.name)")
-        print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place attributions: \(place.attributions)")
-//
-        
-        // Buttonを生成する
+       
         let button = UIButton()
         button.frame = CGRect(x:0,y:0,width:200,height:40)
         
@@ -81,22 +73,17 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
     
     
     func onClick(_ sender: AnyObject){
-        let button = sender as! UIButton
+//        let button = sender as! UIButton
         
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
                 // User is signed in. Show home screen
-                
                 self.ref.child("users").child(user.uid).updateChildValues(["address": (self.searchController?.searchBar.text!)!])
-//                self.ref.childByAutoId().setValue(["food": "yerd"])
                 
             } else {
                 // No User is signed in. Show user the login screen
-                print("😄","nothing")
             }
         }
-        
-        
         
         // アラート表示
         let alert: UIAlertController = UIAlertController(title: "title", message: "It has saved!", preferredStyle: .alert)
@@ -106,7 +93,6 @@ extension inputAddressViewController: GMSAutocompleteResultsViewControllerDelega
             self.dismiss(animated: true, completion: nil)
             
             let tbv: TabBarNaviViewController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarNaviView") as! TabBarNaviViewController
-//            let navi = UINavigationController(rootViewController: tbv)
             tbv.modalTransitionStyle = .crossDissolve
             self.present(tbv, animated: true, completion: nil)
             

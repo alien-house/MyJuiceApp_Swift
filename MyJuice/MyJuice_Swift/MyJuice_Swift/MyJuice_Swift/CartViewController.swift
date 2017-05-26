@@ -18,12 +18,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var cartJsonVar:JSON = ""
     var totalPrice:Double = 0.0
     
-//    struct Cart {
-//        let productID: NSInteger
-//        let email: String = "email"
-//    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.addObserver(self,forKeyPath: "myCart", options: NSKeyValueObservingOptions.new, context: nil)
@@ -37,19 +31,18 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             if(cart2.count > 0){
                 self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = String(cart2.count)
                 checkCart()
-                self.tableView.reloadData()
-                self.collectionView.reloadData()
             }else{
                 self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = nil
             }
+            print("😆")
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
         }
-        print("きた？")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.tabBarController?.navigationItem.title = "My Cart"
-        print("🎿My Cart")
         // Table View
         let statusBarHeight: CGFloat     = UIApplication.shared.statusBarFrame.height
         let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
@@ -58,7 +51,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource             = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
-        
         
         // Collection View
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -74,7 +66,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         collectionView.backgroundColor              = UIColor.clear
         
         checkCart()
-        
         
     }
     
@@ -94,14 +85,13 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if(!self.cartJsonVar.isEmpty){
                 self.view.addSubview(collectionView)
+            }else{
+                self.collectionView.removeFromSuperview()
             }
         }else{
             
-            print("😓")
-            print(self.cartJsonVar)
             self.cartJsonVar = ""
             self.totalPrice = 0.0
-            print(!self.cartJsonVar.isEmpty)
             self.tableView.reloadData()
             self.collectionView.reloadData()
         }
@@ -113,7 +103,6 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if(!self.cartJsonVar.isEmpty){
             return 1
         }else{
-            print("☁️")
             return 0
         }
     }

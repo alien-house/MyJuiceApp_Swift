@@ -81,7 +81,6 @@ class RegisterViewController: UIViewController {
         let btn = UIButton(type:.custom)
         let fbcolor:UIColor = #colorLiteral(red: 0.231372549, green: 0.3490196078, blue: 0.5921568627, alpha: 1)
         btn.backgroundColor = fbcolor
-//        btn.frame = CGRect(x:20, y:20, width:330, height:50);
         btn.layer.cornerRadius = 4.0
         btn.setTitle("Connect with Facebook", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +94,6 @@ class RegisterViewController: UIViewController {
         let btn = UIButton(type:.custom)
         let fbcolor:UIColor = #colorLiteral(red: 0.9647058824, green: 0.8, blue: 0.1834138991, alpha: 1)
         btn.backgroundColor = fbcolor
-//        btn.frame = CGRect(x:20, y:20, width:330, height:50);
         btn.layer.cornerRadius = 4.0
         btn.setTitle("Create Account", for: .normal)
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -125,11 +123,8 @@ class RegisterViewController: UIViewController {
         setupButton()
         
         if FIRAuth.auth()?.currentUser != nil {
-            // User is signed in.
             print("Signed In")
         } else {
-            // No user is signed in.
-//            print("nottttttttttttt")
         }
         
     }
@@ -200,12 +195,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // Once the button is clicked, show the login dialog
     func loginButtonClicked() {
         let loginManager = LoginManager()
@@ -216,16 +205,8 @@ class RegisterViewController: UIViewController {
                 print("User errorerrorerrorerror login.")
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print("Logged in!")
-                print(accessToken)
-                print(FBSDKAccessToken.current().tokenString)
-                //
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                
-                
-                
-                
+            case .success:
+//                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 self.returnUserData()
             }
         }
@@ -244,14 +225,10 @@ class RegisterViewController: UIViewController {
             }
             else
             {
-                // putting user data into dictonary
                 self.userProfile = result as! NSDictionary
-                print(self.userProfile)
                 self.firstnameTextField.text = self.userProfile["first_name"] as! String
                 self.lastnameTextField.text  = self.userProfile["last_name"] as! String
                 self.emailTextField.text     = self.userProfile["email"] as! String
-
-                
             }
         })
         
@@ -268,7 +245,6 @@ class RegisterViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
-                    print("🌟",(error?.localizedDescription)!)
                      self.alert_win(error:(error?.localizedDescription)!)
                     return
                     
@@ -281,7 +257,6 @@ class RegisterViewController: UIViewController {
                 self.ref.child("users").child(user!.uid).updateChildValues(["username": username])
                 self.ref.child("users").child(user!.uid).updateChildValues(["lastname": lastname])
                 self.ref.child("users").child(user!.uid).updateChildValues(["password": password])
-                
                 
                 let alert: UIAlertController = UIAlertController(title: "Created User", message: "Your account has been created successfully!!", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default) { action in
@@ -300,13 +275,6 @@ class RegisterViewController: UIViewController {
         
         self.dismiss(animated: true)
         
-        //after login, gonna go to map setting
-//        let SelectAddressViewController: SelectAddressViewController = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
-//        
-//        let navi = UINavigationController(rootViewController: SelectAddressViewController)
-//        // setting animation
-//        navi.modalTransitionStyle = .crossDissolve
-//        self.present(navi, animated: true, completion: nil)
         
     }
     
@@ -320,8 +288,6 @@ class RegisterViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
 
     }
-    
-    
     
     
 }

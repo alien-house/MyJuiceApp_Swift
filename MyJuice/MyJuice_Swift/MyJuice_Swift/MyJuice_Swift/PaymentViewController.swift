@@ -18,8 +18,6 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.title = "Edit Credit Card Number"
         view.backgroundColor = UIColor(r:255,g:255,b:255)
-//        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.barButtonItemClicked)), animated: true)
-//        
 
         txtfield = UITextField(frame: CGRect(x: 10, y: 90, width: 230, height: 30))
         txtfield.delegate = self
@@ -33,8 +31,10 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
             let userID = FIRAuth.auth()?.currentUser?.uid
             ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                self.ccNumber = value?["creditcard"] as! String
-                self.txtfield.text = self.ccNumber
+                if(((value?["creditcard"]) != nil)){
+                    self.ccNumber = value?["creditcard"] as! String
+                    self.txtfield.text = self.ccNumber
+                }
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -46,10 +46,8 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        print("😄😄","changed")
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
-                print("😄","changed")
                 self.ref.child("users").child(user.uid).updateChildValues(["creditcard": self.txtfield.text!])
             } else {
                 print("nothing")

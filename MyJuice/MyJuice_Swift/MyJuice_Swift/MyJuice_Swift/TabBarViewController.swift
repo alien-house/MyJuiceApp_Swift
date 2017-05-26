@@ -31,7 +31,6 @@ class TabBarViewController: UITabBarController {
         }else{
             self.viewControllers?[1].tabBarItem.badgeValue = nil
         }
-        print("きた？")
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,40 +38,6 @@ class TabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        print("🐔")
-//        
-//        if let controller = self.presentingViewController as? SignInViewController{
-//            print("😏2")
-//            print(controller.item)
-//        }
-//        if let controller2 = self.presentingViewController as? SignInUserViewController{
-//            print("😷2")
-//            //            print(controller2.item)
-//        }
-//        if (self.presentingViewController as? RegisterViewController) != nil{
-//            print("☎️2")
-//            //            print(controller2.item)
-//        }
-        
-        
-        
-        
-        
-    }
 
 
 }

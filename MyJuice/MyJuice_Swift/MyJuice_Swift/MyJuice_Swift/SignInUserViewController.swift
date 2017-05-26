@@ -86,9 +86,6 @@ class SignInUserViewController: UIViewController {
     var userProfile : NSDictionary!
     let userDefaults = UserDefaults.standard
     
-//    @IBOutlet weak var email_input: UITextField!
-//    @IBOutlet weak var password_input: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r:237,g:237,b:237)
@@ -98,38 +95,18 @@ class SignInUserViewController: UIViewController {
         mailtext.textAlignment = NSTextAlignment.center
         view.addSubview(mailtext)
         
-        // check facebook accessToken
-        if let accessToken = AccessToken.current {
-            // User is logged in, use 'accessToken' here.
-            print("もうしてるよ.")
-            print(accessToken)
-        }
-        
         view.addSubview(inputsContainerView)
         setupInputsContainerView()
         view.addSubview(myLoginButton)
         view.addSubview(signInAccountButton)
         setupButton()
         
-        
         userDefaults.register(defaults: ["DataStore": "default"])
-//        saveData(str: "mushimushi")
-//        print(readData())
     }
     
     
-    func saveData(str: String){
-        
-        // Keyを指定して保存
-//        self.user = User(name: "夏目漱石",email:"ucyuujinoco@gmail.com")
-        
-        
-        
-    }
     func readData() -> String {
-        // Keyを指定して読み込み
         let str: String = userDefaults.object(forKey: user.name) as! String
-        
         return str
     }
     
@@ -176,12 +153,6 @@ class SignInUserViewController: UIViewController {
     }
 
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // Once the button is clicked, show the login dialog
     func loginButtonClicked() {
         let loginManager = LoginManager()
@@ -192,49 +163,26 @@ class SignInUserViewController: UIViewController {
                 print("User errorerrorerrorerror login.")
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print("Logged in!")
-                print(accessToken)
-                print(FBSDKAccessToken.current().tokenString)
+            case .success:
                 
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                
-                print("credential?!")
-                print(credential)
-                
-                
-                //Firebase login
                 FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                     if error != nil {
-                        print("error!!!!!!!")
                         self.alert_win(error:(error?.localizedDescription)!)
                     }else{
-                        
                         if FIRAuth.auth()?.currentUser != nil {
-                            print("current!!!!!!!")
-                            
                             let user = FIRAuth.auth()?.currentUser
-                            // The user's ID, unique to the Firebase project.
-                            // Do NOT use this value to authenticate with your backend server,
-                            // if you have one. Use getTokenWithCompletion:completion: instead.
-//                            let email = user?.email
-//                            let uid = user?.uid
-//                            let photoURL = user?.photoURL
-                            print("😁?")
                             self.ref = FIRDatabase.database().reference()
                             self.ref.child("users").child((user?.uid)!).updateChildValues(["email": self.userProfile["email"]!])
                             self.ref.child("users").child((user?.uid)!).updateChildValues(["username": self.userProfile["first_name"]!])
                             self.ref.child("users").child((user?.uid)!).updateChildValues(["lastname": self.userProfile["last_name"]!])
-                            
                             self.goNextPage()
                             
                         }else{
                             print("no exist!")
                         }
-                        
                     }
                 }
-                
                 self.returnUserData()
             }
         }
@@ -253,20 +201,7 @@ class SignInUserViewController: UIViewController {
             }
             else
             {
-                // putting user data into dictonary
                 self.userProfile = result as! NSDictionary
-                print(self.userProfile["first_name"]!)
-                print(self.userProfile["last_name"]!)
-                print(self.userProfile["email"]!)
-                print("😁!")
-                if FIRAuth.auth()?.currentUser != nil {
-                    
-//                    self.ref = FIRDatabase.database().reference()
-//                    self.ref.child("users").child(user.uid).updateChildValues(["email": self.userProfile["email"]!])
-//                    self.ref.child("users").child(user.uid).updateChildValues(["username": self.userProfile["first_name"]!])
-//                    self.ref.child("users").child(user.uid).updateChildValues(["lastname": self.userProfile["last_name"]!])
-                }
-                
             }
         })
         
@@ -280,7 +215,6 @@ class SignInUserViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             
             if error == nil{
-                print("suceess!!")
                 self.goNextPage()
             }else{
                 self.alert_win(error: (error?.localizedDescription)!)

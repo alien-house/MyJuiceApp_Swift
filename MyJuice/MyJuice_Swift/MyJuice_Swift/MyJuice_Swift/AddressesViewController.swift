@@ -31,7 +31,6 @@ class AddressesViewController: UIViewController {
         self.title = "Edit Addresses"
         view.backgroundColor = UIColor(r:255,g:255,b:255)
         
-//        print(storyboard!)
         txtLabel = UILabel(frame: CGRect(x: 10, y: 90, width: 230, height: 30))
         
         self.view.addSubview(self.changeButton)
@@ -63,18 +62,10 @@ class AddressesViewController: UIViewController {
     
     func changeButtonClicked(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        print("😄")
-        print(storyboard)
-//        let nextView = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView") as! SelectAddressViewController
-//        let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "SelectAddressView")
         
-        
-//        let nextView = self.storyboard?.instantiateViewController(withIdentifier: "SelectAddressView")
         self.navigationController?.pushViewController(nextView, animated: true)
         
-//        print("😄","nextView",nextView)
-//        self.navigationController?.pushViewController(nextView!, animated: true)
     }
 
 }

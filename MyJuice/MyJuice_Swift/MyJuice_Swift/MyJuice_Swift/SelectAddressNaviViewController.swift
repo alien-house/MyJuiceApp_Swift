@@ -14,7 +14,6 @@ class SelectAddressNaviViewController: UINavigationController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r:255,g:255,b:255)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,14 +22,5 @@ class SelectAddressNaviViewController: UINavigationController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -21,11 +21,10 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     var atai:AnyObject?
     
     //Lcation(Place ID) of The Brunch Store'
-    let placeIDs = ["ChIJEenQuNNzhlQRYBLvIjoqPJE","ChIJdd9ipdNzhlQRTeCkanpMc8s","ChIJ5_L29tNzhlQR84NgJCxQ8j4"]
+    let placeIDs = ["ChIJEenQuNNzhlQRYBLvIjoqPJE","ChIJuTxh_YJxhlQRNCKoNQhqDDs","ChIJ5_L29tNzhlQR84NgJCxQ8j4","ChIJnSkcknhxhlQR8PhwzwBejQw"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         
         if CLLocationManager.locationServicesEnabled() {
             print("ゞlocationServicesEnabled")
@@ -47,8 +46,7 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         self.mapView.settings.myLocationButton = true
         self.mapView.isMyLocationEnabled = true
         view = self.mapView
-        self.mapView.delegate = self // why here...? otherwise error will be occured
-        
+        self.mapView.delegate = self         
         loadViews()
         
     }
@@ -65,11 +63,6 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     func loadViews() {
         print("loadView")
   
-        // Create a GMSCameraPosition that tells the map to display the
-//        let camera = GMSCameraPosition.camera(withLatitude: 49.277143, longitude: -123.129742, zoom: 16.0)
-        
-        
-        
         placesClient = GMSPlacesClient.shared()
         // A hotel in Saigon with an attribution.
         let placeID = "ChIJEenQuNNzhlQRYBLvIjoqPJE"
@@ -84,18 +77,12 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
                 }
                 
                 if let p = place {
-                    print("Place name \(p.name)")
-                    print("Place address \(String(describing: p.formattedAddress))")
-                    print("Place placeID \(p.placeID)")
-                    print("Place coordinate \(p.coordinate.latitude)")
                     
                     let marker = GMSMarker()
-//                    marker.isFlat = true
                     marker.position = CLLocationCoordinate2D(latitude: p.coordinate.latitude, longitude: p.coordinate.longitude)
                     marker.title = p.name
                     let myPlaceDic:[String:String] = ["myPlaceID" : p.placeID]
                     marker.userData = myPlaceDic
-//                    marker.userData = String("placeID": "Hello")
                     
                     marker.snippet = p.formattedAddress
                     marker.map = self.mapView
@@ -105,7 +92,6 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
                 }
             })
         }
-//        locationManager.stopUpdatingLocation()
         
     }
     
@@ -124,104 +110,32 @@ class StoreViewController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     
         
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("🌾didUpdateLocations");
         
         guard let newLocation = locations.last,
             CLLocationCoordinate2DIsValid(newLocation.coordinate) else {
                 print("Error");
                 return
-        }
-        
+        }        
         let now = GMSCameraPosition.camera(withLatitude: newLocation.coordinate.latitude,
                                            longitude:newLocation.coordinate.longitude,zoom:17)
         self.mapView.camera = now
         locationManager.stopUpdatingLocation()
         
-        
-        
-        
-//
-//        let marker_now = GMSMarker()
-//        marker_now.isFlat = true
-//        marker_now.position = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude:newLocation.coordinate.longitude)
-//        marker_now.title = "MyJuice Modate store"
-//        marker_now.snippet = "kokoa"
-//        marker_now.map = self.mapView
-        
     }
     
-    
-    
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-//        print((marker.userData as AnyObject)["placeID"])
 
         let StoreDetailViewController: StoreDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "StoreDetail") as! StoreDetailViewController
         
         StoreDetailViewController.atai = marker.userData as AnyObject
-        
-        //normal transit page
-        //present(StoreDetailViewController, animated: true, completion: nil)
         
         let navi = UINavigationController(rootViewController: StoreDetailViewController)
         // setting animation
          navi.modalTransitionStyle = .crossDissolve
         present(navi, animated: true, completion: nil)
         
-        
-        
     }
     
-    
-    
-    
-    
-    
-    
-    // --
-    
-//    @IBAction func getCurrentPlace(_ sender: UIButton) {
-//        
-//        
-//        //        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-//        //            if let error = error {
-//        //                print("Pick Place error: \(error.localizedDescription)")
-//        //                return
-//        //            }
-//        //
-//        //            self.nameLabel.text = "No current place"
-//        //            self.addressLabel.text = ""
-//        //
-//        //            if let placeLikelihoodList = placeLikelihoodList {
-//        //                let place = placeLikelihoodList.likelihoods.first?.place
-//        //                if let place = place {
-//        //                    self.nameLabel.text = place.name
-//        //                    self.addressLabel.text = place.formattedAddress?.components(separatedBy: ", ")
-//        //                        .joined(separator: "\n")
-//        //                }
-//        //            }
-//        //        })
-//        
-//        
-//        placesClient.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
-//            if let error = error {
-//                print("Pick Place error: \(error.localizedDescription)")
-//                return
-//            }
-//            
-//            if let placeLikelihoodList = placeLikelihoodList {
-//                for likelihood in placeLikelihoodList.likelihoods {
-//                    let place = likelihood.place
-//                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
-//                    print("Current Place address \(place.formattedAddress)")
-//                    print("Current Place attributions \(place.attributions)")
-//                    print("Current PlaceID \(place.placeID)")
-//                }
-//            }
-//        })
-//        
-//    }
-    
-
     
 }
 
