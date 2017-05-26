@@ -196,11 +196,9 @@ class SignInUserViewController: UIViewController {
                 print("Logged in!")
                 print(accessToken)
                 print(FBSDKAccessToken.current().tokenString)
-                //
-                print("90900090909090909")
+                
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
                 
-                print("=-=-====--===-=")
                 print("credential?!")
                 print(credential)
                 
@@ -219,10 +217,14 @@ class SignInUserViewController: UIViewController {
                             // The user's ID, unique to the Firebase project.
                             // Do NOT use this value to authenticate with your backend server,
                             // if you have one. Use getTokenWithCompletion:completion: instead.
-                            let email = user?.email
-                            let uid = user?.uid
-                            let photoURL = user?.photoURL
-                            
+//                            let email = user?.email
+//                            let uid = user?.uid
+//                            let photoURL = user?.photoURL
+                            print("😁?")
+                            self.ref = FIRDatabase.database().reference()
+                            self.ref.child("users").child((user?.uid)!).updateChildValues(["email": self.userProfile["email"]!])
+                            self.ref.child("users").child((user?.uid)!).updateChildValues(["username": self.userProfile["first_name"]!])
+                            self.ref.child("users").child((user?.uid)!).updateChildValues(["lastname": self.userProfile["last_name"]!])
                             
                             self.goNextPage()
                             
@@ -256,8 +258,9 @@ class SignInUserViewController: UIViewController {
                 print(self.userProfile["first_name"]!)
                 print(self.userProfile["last_name"]!)
                 print(self.userProfile["email"]!)
+                print("😁!")
                 if FIRAuth.auth()?.currentUser != nil {
-                    print("😁!")
+                    
 //                    self.ref = FIRDatabase.database().reference()
 //                    self.ref.child("users").child(user.uid).updateChildValues(["email": self.userProfile["email"]!])
 //                    self.ref.child("users").child(user.uid).updateChildValues(["username": self.userProfile["first_name"]!])
