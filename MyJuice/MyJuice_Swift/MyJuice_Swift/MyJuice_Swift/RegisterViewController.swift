@@ -226,9 +226,9 @@ class RegisterViewController: UIViewController {
             else
             {
                 self.userProfile = result as! NSDictionary
-                self.firstnameTextField.text = self.userProfile["first_name"] as! String
-                self.lastnameTextField.text  = self.userProfile["last_name"] as! String
-                self.emailTextField.text     = self.userProfile["email"] as! String
+                self.firstnameTextField.text = self.userProfile["first_name"] as? String
+                self.lastnameTextField.text  = self.userProfile["last_name"] as? String
+                self.emailTextField.text     = self.userProfile["email"] as? String
             }
         })
         
@@ -244,7 +244,7 @@ class RegisterViewController: UIViewController {
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                if FIRAuthErrorCode(rawValue: error!._code) != nil {
                      self.alert_win(error:(error?.localizedDescription)!)
                     return
                     

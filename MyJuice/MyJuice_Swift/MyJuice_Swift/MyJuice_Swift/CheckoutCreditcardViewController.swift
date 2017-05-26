@@ -65,7 +65,6 @@ class CheckoutCreditcardViewController: UIViewController, UIPickerViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r:255,g:255,b:255)
-        print("CheckoutPaymentViewController!!^^")
         myUIPicker = UIPickerView()
         myUIPicker.frame = CGRect(x: 0, y: self.view.frame.height - 300, width: self.view.frame.width, height: 300)
         myUIPicker.delegate = self
@@ -97,8 +96,7 @@ class CheckoutCreditcardViewController: UIViewController, UIPickerViewDelegate, 
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("row: \(row)")
-        print("value: \(myValues[row])")
+        
         
         if(row == 1){
             self.view.addSubview(self.ccInputView)

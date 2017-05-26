@@ -21,11 +21,16 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.addObserver(self,forKeyPath: "myCart", options: NSKeyValueObservingOptions.new, context: nil)
+//        checkmyCart()
         userDefaults.register(defaults: ["DataStore": "default"])
         
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        checkmyCart()
+    }
+    
+    func checkmyCart(){
         
         if let cart2 = self.userDefaults.array(forKey: "myCart"){
             if(cart2.count > 0){
@@ -33,12 +38,15 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 checkCart()
             }else{
                 self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = nil
+                let indexPath = self.collectionView.indexPathsForVisibleItems
+                self.collectionView.deleteItems(at: indexPath)
             }
-            print("😆")
             self.tableView.reloadData()
             self.collectionView.reloadData()
         }
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -85,9 +93,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if(!self.cartJsonVar.isEmpty){
                 self.view.addSubview(collectionView)
-            }else{
-                self.collectionView.removeFromSuperview()
             }
+            
         }else{
             
             self.cartJsonVar = ""
