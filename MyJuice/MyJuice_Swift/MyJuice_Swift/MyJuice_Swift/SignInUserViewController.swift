@@ -80,7 +80,8 @@ class SignInUserViewController: UIViewController {
         let name: String = "name"
         let email: String = "email"
     }
-
+    
+    var ref: FIRDatabaseReference!
     var user = User()
     var userProfile : NSDictionary!
     let userDefaults = UserDefaults.standard
@@ -123,8 +124,6 @@ class SignInUserViewController: UIViewController {
 //        self.user = User(name: "夏目漱石",email:"ucyuujinoco@gmail.com")
         
         
-        userDefaults.set("夏目漱石", forKey: user.name)
-        userDefaults.synchronize()
         
     }
     func readData() -> String {
@@ -254,7 +253,16 @@ class SignInUserViewController: UIViewController {
             {
                 // putting user data into dictonary
                 self.userProfile = result as! NSDictionary
-                print(self.userProfile)
+                print(self.userProfile["first_name"]!)
+                print(self.userProfile["last_name"]!)
+                print(self.userProfile["email"]!)
+                if FIRAuth.auth()?.currentUser != nil {
+                    print("😁!")
+//                    self.ref = FIRDatabase.database().reference()
+//                    self.ref.child("users").child(user.uid).updateChildValues(["email": self.userProfile["email"]!])
+//                    self.ref.child("users").child(user.uid).updateChildValues(["username": self.userProfile["first_name"]!])
+//                    self.ref.child("users").child(user.uid).updateChildValues(["lastname": self.userProfile["last_name"]!])
+                }
                 
             }
         })

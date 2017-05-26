@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y3E-GL-CpQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rEh-rj-vJY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <scene sceneID="gt1-Jl-8KK">
             <objects>
                 <navigationController id="6eF-Sg-6Ha" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qry-YD-old">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qry-YD-old">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -457,7 +457,7 @@ which you can order</string>
             <objects>
                 <navigationController restorationIdentifier="SelectAddressNaviView" storyboardIdentifier="SelectAddressNaviView" automaticallyAdjustsScrollViewInsets="NO" id="Gjr-zw-9At" customClass="SelectAddressNaviViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rSa-qO-HSH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rSa-qO-HSH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -487,7 +487,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Edt-B4-aDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="1231"/>
+            <point key="canvasLocation" x="3825" y="1195"/>
         </scene>
         <!--Menu-->
         <scene sceneID="FQx-Uj-YEQ">
@@ -516,7 +516,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ar-6V-EOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928.8" y="1230.1349325337333"/>
+            <point key="canvasLocation" x="3049" y="1195"/>
         </scene>
         <!--Account-->
         <scene sceneID="15m-Dz-eo9">
@@ -535,7 +535,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YTj-vh-gvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3455" y="1230"/>
+            <point key="canvasLocation" x="4574" y="1194"/>
         </scene>
         <!--Account Detail View Controller-->
         <scene sceneID="uEX-pL-Rvi">
@@ -553,12 +553,12 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6X9-s2-JJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4161" y="1231"/>
+            <point key="canvasLocation" x="5281" y="1195"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ldr-GS-uHq">
             <objects>
-                <tabBarController restorationIdentifier="TabBar" storyboardIdentifier="TabBar" id="MOy-lZ-Twd" customClass="TabBarViewController" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="TabBar" storyboardIdentifier="TabBar" id="MOy-lZ-Twd" customClass="TabBarViewController" customModule="MyJuice_Swift" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6ku-HV-yuL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ZX7-YO-sL4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -579,7 +579,7 @@ which you can order</string>
         <scene sceneID="kbS-1o-rXo">
             <objects>
                 <navigationController storyboardIdentifier="TabBarNaviView" id="rEh-rj-vJY" customClass="TabBarNaviViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="UwC-mx-IZn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UwC-mx-IZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -596,7 +596,7 @@ which you can order</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ajD-fo-B6e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -701,7 +701,7 @@ which you can order</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GS-54-Fef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="1967"/>
+            <point key="canvasLocation" x="3049" y="1876"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hnt-ke-BkC">

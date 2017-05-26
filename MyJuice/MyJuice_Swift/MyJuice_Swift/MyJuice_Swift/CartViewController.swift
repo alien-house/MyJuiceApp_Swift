@@ -23,40 +23,14 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let email: String = "email"
 //    }
     
-    //for test
-    let testButton:UIButton = {
-        let btn = UIButton(type:.custom)
-        let fbcolor:UIColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        btn.backgroundColor = fbcolor
-        btn.layer.cornerRadius = 4.0
-        btn.tag = 0
-        btn.setTitle("adddd", for: .normal)
-        btn.setTitleColor(UIColor.white, for: .normal)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        btn.frame = CGRect(x:20, y:560, width:300, height:50)
-        btn.addTarget(self, action: #selector(testButtonClicked), for: .touchUpInside)
-        return btn
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //for test =======================
-        self.view.addSubview(self.testButton)
-        //=======================
         UserDefaults.standard.addObserver(self,forKeyPath: "myCart", options: NSKeyValueObservingOptions.new, context: nil)
         userDefaults.register(defaults: ["DataStore": "default"])
         
     }
     
-    //for test =======================
-    func testButtonClicked(){
-        print("㊗️")
-        var cart: [[String: Any]] = []
-        cart.append(["ingr": ["Apple","Pineapple"], "bottle": ["skull family"], "price": [12.05], "qty": [1]])
-        cart.append(["ingr": ["Banana","Mango","Strawberry"], "bottle": ["don't forget it!"], "price": [16], "qty": [5]])
-        userDefaults.set(cart, forKey: "myCart")
-    
-    }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         if let cart2 = self.userDefaults.array(forKey: "myCart"){
@@ -65,6 +39,8 @@ class CartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 checkCart()
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
+            }else{
+                self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = nil
             }
         }
         print("きた？")

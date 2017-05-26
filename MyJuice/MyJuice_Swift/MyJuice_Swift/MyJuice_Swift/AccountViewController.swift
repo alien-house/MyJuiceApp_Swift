@@ -19,7 +19,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Account"
-        print("AccountViewController")
         let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
         let navigationBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height
         

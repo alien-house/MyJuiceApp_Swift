@@ -17,7 +17,8 @@ class IngredientDetailViewController: UIViewController {
     var selectedItems = [Int]()
     var image: String?
     var ingredient: UIImage?
-    var price: Double? = 0
+    var price: Double = 0.0
+    var ingImagesName:[String] = []
     @IBOutlet weak var ingredient1: UIImageView!
     @IBOutlet weak var ingredient2: UIImageView!
     @IBOutlet weak var ingredient3: UIImageView!
@@ -29,9 +30,20 @@ class IngredientDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.ingredient1.backgroundColor = UIColor.white
+        self.ingredient2.backgroundColor = UIColor.white
+        self.ingredient3.backgroundColor = UIColor.white
+//        self.ingredient1.contentMode = UIViewContentMode.scaleAspectFit
         self.ingredient1.image = self.images[selectedItems[0]]
         self.ingredient2.image = self.images[selectedItems[1]]
         self.ingredient3.image = self.images[selectedItems[2]]
+        
+        self.ingredient1.layer.masksToBounds = true
+        self.ingredient1.layer.cornerRadius = 4
+        self.ingredient2.layer.masksToBounds = true
+        self.ingredient2.layer.cornerRadius = 4
+        self.ingredient3.layer.masksToBounds = true
+        self.ingredient3.layer.cornerRadius = 4
         
         self.addItemPrice(index: selectedItems[0])
         self.addItemPrice(index: selectedItems[1])
@@ -41,8 +53,8 @@ class IngredientDetailViewController: UIViewController {
     
     
     func addItemPrice(index: Int) {
-        self.price = self.price! + self.prices[index]
-        self.label.text = "$ \(self.price!)"
+        self.price = self.price + self.prices[index]
+        self.label.text = "$ \(self.price)"
     }
     
     @IBAction func btnBack(_ sender: UIButton) {
@@ -50,6 +62,17 @@ class IngredientDetailViewController: UIViewController {
     }
     
     @IBAction func btnNext(_ sender: UIButton) {
+        let nextView = BottleViewController()
+//        let navi = UINavigationController(rootViewController: nextView)
+//        present(navi, animated: true, completion: nil)
+        
+        nextView.ingPrice = self.price
+        nextView.ingImagesName = self.ingImagesName
+        
+        self.navigationController?.pushViewController(nextView, animated: true)
+        
+        
+        
     }
     
 }

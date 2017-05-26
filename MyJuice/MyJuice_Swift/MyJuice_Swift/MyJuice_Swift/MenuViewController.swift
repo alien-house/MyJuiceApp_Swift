@@ -19,18 +19,17 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let image : UIImage!
     }
     var imageName:UIImage!
-    let userDefaults = UserDefaults.standard
     
     var arrayOfCellDatas = [cellData]()
     @IBOutlet weak var menuTableView: UITableView!
     
     var imageName_bottles = [UIImage(named:"1"),UIImage(named:"2"),UIImage(named:"3"),UIImage(named:"4"),UIImage(named:"5"),UIImage(named:"6"),UIImage(named:"7"),UIImage(named:"8")]
-    var nameArray = ["name 1","name 2","name 3","name 4","name 5","name 6","name 7","name 8"]
+    var nameIngArray = ["Apple","Banana","Pineapple","Watermelon","Orange","Strawberry","Celery","Tomato","Grapes","Avocado","Carrot"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var cart: [[String: Any]] = []
+//        var cart: [[String: Any]] = []
         
         self.arrayOfCellDatas = [cellData(cell: 1, text: "Apple(2.50)", image: #imageLiteral(resourceName: "AppleImage")),
                                  cellData(cell: 2, text: "Banana(2.50)", image: #imageLiteral(resourceName: "banana")),
@@ -51,8 +50,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        cart.append(["ingr": ["Banana","Mango","Strawberry"], "bottle": ["don't forget it!"], "price": [16], "qty": [5]])
 //        
         
-        userDefaults.set(cart, forKey: "myCart")
-        userDefaults.synchronize()
+//        userDefaults.set(cart, forKey: "myCart")
+//        userDefaults.synchronize()
         
 //        
 //        
@@ -64,63 +63,45 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
-        if let cart2 = self.userDefaults.array(forKey: "myCart"){
-            if(cart2.count > 0){
-                self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = String(cart2.count)
-            }
-        }
-        self.tabBarController?.navigationItem.title = "Menu"
+//        
+//        
+//        if let cart2 = self.userDefaults.array(forKey: "myCart"){
+//            if(cart2.count > 0){
+//                self.tabBarController?.viewControllers?[1].tabBarItem.badgeValue = String(cart2.count)
+//            }
+//        }
+        self.tabBarController?.navigationItem.title = "Choose Ingredients"
         
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = Bundle.main.loadNibNamed("TableViewCell_Ingredient1", owner: self, options: nil)?.first as! TableViewCell_Ingredient1
         cell.Ingredient1.image = arrayOfCellDatas[indexPath.row].image
         cell.Ingredient_label1.text = arrayOfCellDatas[indexPath.row].text
-        
+//        cell.setHighlighted(highlighted, animated: animated)
+//        cell.setHighlighted(false, animated: false)
+//        cell.backgroundColor = UIColor.white
         return cell
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return arrayOfCellDatas.count
-        
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int{
         return 1
     }
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if arrayOfCellDatas[indexPath.row].cell == 1{
-            return 60
-            
-        }
-        else if arrayOfCellDatas[indexPath.row].cell == 2{
-            return 60
-            
-        }
-        else{
-            return 60
-            
-        }
+        return 60
     }
     
+    
     /* Will Select Row */
-    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: IndexPath) -> IndexPath? {
         
         if let sr = tableView.indexPathsForSelectedRows {
             if sr.count <= 3 {
@@ -136,6 +117,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return indexPath
     }
+    
     
     func tableView(_ UItableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -166,6 +148,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    
     func selectCell(indexPath:IndexPath) {
         print("😆")
 //        print(self.arrayOfCellDatas[indexPath.row].image)
@@ -175,10 +158,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         selectedItems.append(indexPath.row)
     }
     
+    
     func unselectCell(indexPath: IndexPath) {
         menuTableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
         selectedItems.remove(at: selectedItems.index(of: indexPath.row)!)
     }
+    
     
     func createAlert(titleText: String, messageText: String ){
         
@@ -190,12 +175,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         alert.addAction(UIAlertAction(title: "Next", style: .default, handler: { (action) in
                         self.nextView(sender: self)
-//            self.performSegue(withIdentifier: "testSegue", sender: self)
         }))
         
         self.present(alert, animated: true, completion: nil)
-        
     }
+    
     
     func nextView(sender: Any) {
         
@@ -207,6 +191,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         //present(StoreDetailViewController, animated: true, completion: nil)
         
         IngredientDetailViewController.selectedItems = selectedItems
+        
+        
+        var ingImagesName:[String] = []
+        print("selectedItemsselectedItems")
+        print(selectedItems)
+        for i in 0..<selectedItems.count {
+            ingImagesName.append(nameIngArray[selectedItems[i]])
+        }
+        IngredientDetailViewController.ingImagesName = ingImagesName
+        
 //        IngredientDetailViewController.image = self.arrayOfCellDatas[indexPath.row].image
         
 //        let navi = UINavigationController(rootViewController: IngredientDetailViewController)
@@ -217,12 +211,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let target = segue.destination as? IngredientDetailViewController
-        target?.selectedItems = selectedItems
-        print("prepare done")
-    }
     
     
 

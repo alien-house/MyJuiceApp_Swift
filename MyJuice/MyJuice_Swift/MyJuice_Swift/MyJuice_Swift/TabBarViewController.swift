@@ -8,13 +8,30 @@
 
 import UIKit
 
-class TabBarViewController: UIViewController {
+class TabBarViewController: UITabBarController {
     
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        badgeUpdate()
+        UserDefaults.standard.addObserver(self,forKeyPath: "myCart", options: NSKeyValueObservingOptions.new, context: nil)
         
-        
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        self.badgeUpdate()
+    }
+    
+    func badgeUpdate(){
+        if let cart2 = self.userDefaults.array(forKey: "myCart"){
+            if(cart2.count > 0){
+                self.viewControllers?[1].tabBarItem.badgeValue = String(cart2.count)
+            }
+        }else{
+            self.viewControllers?[1].tabBarItem.badgeValue = nil
+        }
+        print("きた？")
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,19 +53,20 @@ class TabBarViewController: UIViewController {
 
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        if let controller = self.presentingViewController as? SignInViewController{
-            print("😏2")
-            print(controller.item)
-        }
-        if let controller2 = self.presentingViewController as? SignInUserViewController{
-            print("😷2")
-            //            print(controller2.item)
-        }
-        if (self.presentingViewController as? RegisterViewController) != nil{
-            print("☎️2")
-            //            print(controller2.item)
-        }
+//        print("🐔")
+//        
+//        if let controller = self.presentingViewController as? SignInViewController{
+//            print("😏2")
+//            print(controller.item)
+//        }
+//        if let controller2 = self.presentingViewController as? SignInUserViewController{
+//            print("😷2")
+//            //            print(controller2.item)
+//        }
+//        if (self.presentingViewController as? RegisterViewController) != nil{
+//            print("☎️2")
+//            //            print(controller2.item)
+//        }
         
         
         

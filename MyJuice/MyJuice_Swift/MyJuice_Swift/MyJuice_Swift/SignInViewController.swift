@@ -68,11 +68,10 @@ class SignInViewController: UIViewController  {
     
     @IBAction func btnBack(_ sender: UIBarButtonItem) {
 //        nextViewController.foo = bar
-        print("☀️")
+        
         let controller = self.presentingViewController as? SignInViewController
         self.dismiss(animated: true, completion: {
             controller?.item = "kokoko"
-            print(self.parent?.childViewControllers)
 //            self.parent.yourVariable = 0
         })
     }

@@ -120,8 +120,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-//        if(self.objectsUserSelected.count == 4){
-          if(self.objectsUserSelected.count == 1){
+        if(self.objectsUserSelected.count == 4){
             
             
             let alert: UIAlertController = UIAlertController(title: "", message: "Are you really gonna buy?", preferredStyle: .alert)
@@ -142,17 +141,6 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
             
-            
-            
-            // if complete, cart is gonna deleted
-            
-            //        self.dismiss(animated: true, completion: nil)
-            
-            //        let TabBarViewController: TabBarViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabBar") as! TabBarViewController
-            //
-            //        let navi = UINavigationController(rootViewController: TabBarViewController)
-            //        navi.modalTransitionStyle = .crossDissolve
-            //        present(navi, animated: true, completion: nil)
             
         }else{
             
@@ -203,7 +191,6 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("🐶")
         if(indexPath.row == 0){
             
 //            let storyboard: UIStoryboard = self.storyboard!
@@ -212,8 +199,6 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
             
             let nextView = storyboard?.instantiateViewController(withIdentifier: "SelectAddressView")
             
-            print("😄","nextView")
-            print(nextView)
             self.navigationController?.pushViewController(nextView!, animated: true)
             
         }else if(indexPath.row == 1){
