@@ -14,11 +14,17 @@ import GooglePlacePicker
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import Firebase
+import FirebaseAuth
 
 class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var mapView : GMSMapView!
     var atai:AnyObject?
+    var ref: FIRDatabaseReference!
+    var resDataAddress:String = ""
+    
+    var delegate:CheckoutPayDelegate?
 //    var storeData :<String,Any>()
     var storeData = [String: Double]()
     var storeDataArray = [String]()
@@ -26,6 +32,21 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
     var arrRes = [[String:AnyObject]]()
     
     @IBOutlet weak var DetailTable: UITableView!
+    
+    @IBAction func btnChoose(_ sender: UIButton) {
+        
+        self.ref = FIRDatabase.database().reference()
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if let user = user {
+                self.ref.child("users").child(user.uid).updateChildValues(["address": self.resDataAddress])
+            }
+        }
+
+    }
+    
+    @IBAction func btnCancel(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         
@@ -54,8 +75,8 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                 if let resDataName = swiftyJsonVar["result"]["name"].string {
                     self.storeDataArray.append(resDataName)
                 }
-                if let resDataAddress = swiftyJsonVar["result"]["formatted_address"].string {
-                    self.storeDataArray.append(resDataAddress)
+                if self.resDataAddress == swiftyJsonVar["result"]["formatted_address"].string! {
+                    self.storeDataArray.append(self.resDataAddress)
                 }
                 if let resDataPhone = swiftyJsonVar["result"]["formatted_phone_number"].string {
                     self.storeDataArray.append(resDataPhone)

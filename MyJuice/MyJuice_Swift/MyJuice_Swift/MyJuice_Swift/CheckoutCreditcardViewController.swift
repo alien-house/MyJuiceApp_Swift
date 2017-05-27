@@ -147,15 +147,23 @@ class CheckoutCreditcardViewController: UIViewController, UIPickerViewDelegate, 
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     print("😄","nothing")
+                    
+                    let alert: UIAlertController = UIAlertController(title: "You need to login", message: "Please register your account or sign in", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    
                 }
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { action in
             print("Cancel")
         }
+        alert.addAction(cancelAction)
         
         alert.addAction(okAction)
-        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
     

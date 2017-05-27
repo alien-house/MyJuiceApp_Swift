@@ -170,13 +170,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="choose"/>
                                 <connections>
-                                    <segue destination="cF2-Kt-60v" kind="show" id="78H-Xg-w9C"/>
+                                    <action selector="btnChoose:" destination="Rml-SQ-W5u" eventType="touchUpInside" id="pQE-Qc-o5U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIR-BX-wGR">
                                 <rect key="frame" x="16" y="590" width="156" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="btnCancel:" destination="Rml-SQ-W5u" eventType="touchUpInside" id="5Ah-vz-ygM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -27,17 +27,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource    =   self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
-        print("🎧")
-        //signout
-//        let firebaseAuth = FIRAuth.auth()
-//        do {
-//            try firebaseAuth?.signOut()
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -50,9 +41,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     func checkIfUserIsLoggedIn(){
         
         if FIRAuth.auth()?.currentUser != nil {
-            // if already login
-            print("login!!!!!!💦")
-                        
 //            let AccountDetailViewController: AccountDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "AccountDetailView") as! AccountDetailViewController
 //            let navi = UINavigationController(rootViewController: AccountDetailViewController)
 //            navi.modalTransitionStyle = .crossDissolve
@@ -61,7 +49,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }else{
             // without login
-            
             
             let alert: UIAlertController = UIAlertController(title: "Register/Sign In", message: "Please register your account or sign in", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default) { action in
@@ -83,8 +70,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
             alert.addAction(okAction)
             alert.addAction(cancelAction)
             self.present(alert, animated: true, completion: nil)
-            
-            
             
         }
         

@@ -162,6 +162,5 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else {
             }
         }
-        print("changeddd"+"👽")
     }
 }
