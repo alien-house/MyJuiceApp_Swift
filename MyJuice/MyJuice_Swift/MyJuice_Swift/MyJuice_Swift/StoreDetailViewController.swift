@@ -22,7 +22,7 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
     var mapView : GMSMapView!
     var atai:AnyObject?
     var ref: FIRDatabaseReference!
-    var resDataAddress:String = ""
+    var resDataAddress2:String = ""
     
     var delegate:CheckoutPayDelegate?
 //    var storeData :<String,Any>()
@@ -38,7 +38,49 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
         self.ref = FIRDatabase.database().reference()
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if let user = user {
-                self.ref.child("users").child(user.uid).updateChildValues(["address": self.resDataAddress])
+                self.ref.child("users").child(user.uid).updateChildValues(["address": self.resDataAddress2])
+                
+                let alert: UIAlertController = UIAlertController(title: "It's saved!", message: "", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                    
+                    
+                    let CheckoutViewController: CheckoutViewController = self.storyboard?.instantiateViewController(withIdentifier: "Checkout") as! CheckoutViewController
+                    
+                    
+                    let navi = UINavigationController(rootViewController: CheckoutViewController)
+                            navi.modalTransitionStyle = .crossDissolve
+                    self.present(navi, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                    
+//                    self.navigationController?.popViewController(animated: true)
+//                    self.dismiss(animated: true, completion: {
+//                        
+//                        print("😢")
+//                        
+//                    })
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+
+                
+                
+                
+                //                self.navigationController?.popViewController(animated: true)
+//                print(self.navigationController!)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                print(storyboard)
+//                self.dismiss(animated: true, completion: nil)
+//                self.navigationController?.popToRootViewController(animated: true)
+//                
+//                self.navigationController?.popViewController(animated: true)
+                
+                
+                
+                
+//
             }
         }
 
@@ -75,8 +117,9 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                 if let resDataName = swiftyJsonVar["result"]["name"].string {
                     self.storeDataArray.append(resDataName)
                 }
-                if self.resDataAddress == swiftyJsonVar["result"]["formatted_address"].string! {
-                    self.storeDataArray.append(self.resDataAddress)
+                if let resDataAddress = swiftyJsonVar["result"]["formatted_address"].string {
+                    self.storeDataArray.append(resDataAddress)
+                    self.resDataAddress2 = resDataAddress
                 }
                 if let resDataPhone = swiftyJsonVar["result"]["formatted_phone_number"].string {
                     self.storeDataArray.append(resDataPhone)
@@ -146,7 +189,7 @@ class StoreDetailViewController: UIViewController, GMSMapViewDelegate, UITableVi
                     cell.DetailLabel.text = hourString
                     
                 }else{
-                    print(self.storeDataArray[indexPath.row])
+//                    print(self.storeDataArray[indexPath.row])
                     cell.DetailLabel.text = self.storeDataArray[indexPath.row]
                 }
                 cell.DetailLabel!.numberOfLines = 0

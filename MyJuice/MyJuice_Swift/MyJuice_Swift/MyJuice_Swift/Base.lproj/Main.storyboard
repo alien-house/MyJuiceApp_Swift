@@ -264,24 +264,6 @@
             </objects>
             <point key="canvasLocation" x="661.60000000000002" y="2116.1919040479761"/>
         </scene>
-        <!--Location Test View Controller-->
-        <scene sceneID="fSN-pD-jq7">
-            <objects>
-                <viewController id="pVg-lb-XzM" customClass="LocationTestViewController" customModule="MyJuice_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1H5-1L-93A"/>
-                        <viewControllerLayoutGuide type="bottom" id="qUW-w2-GbX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WVV-21-e2r">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MPl-b5-uo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1446" y="2117"/>
-        </scene>
         <!--Sign In User View Controller-->
         <scene sceneID="aNK-tv-ydd">
             <objects>
@@ -566,24 +548,6 @@ which you can order</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xz8-rZ-7xx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2310" y="349"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ztq-Ih-jIh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Zc-0f-RIR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ajD-fo-B6e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Rml-SQ-W5u" kind="relationship" relationship="rootViewController" id="SEP-rU-rpX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PHC-sF-cNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-967" y="2117"/>
         </scene>
         <!--Ingredient Detail View Controller-->
         <scene sceneID="Ge0-PD-CP2">
